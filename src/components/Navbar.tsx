@@ -26,6 +26,12 @@ export function Navbar() {
               Benefits
             </Link>
             <Link
+              href="/demo"
+              className="text-sm font-medium text-[hsl(var(--foreground))]/70 transition-colors hover:text-[hsl(var(--foreground))]"
+            >
+              Demo
+            </Link>
+            <Link
               href="#contact"
               className="text-sm font-medium text-[hsl(var(--foreground))]/70 transition-colors hover:text-[hsl(var(--foreground))]"
             >
@@ -33,6 +39,11 @@ export function Navbar() {
             </Link>
           </nav>
           <div className="flex items-center gap-2">
+            <Link href="/demo">
+              <Button size="sm" variant="default" className="mr-2">
+                Try Demo
+              </Button>
+            </Link>
             <Link href="#contact">
               <Button size="sm" variant="outline">
                 Contact Us
