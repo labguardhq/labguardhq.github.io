@@ -3907,3 +3907,122 @@ input, select, textarea {
 			}
 
 		}
+
+#sidebar .logo {
+    display: block;
+    margin-left: 2.5em;  /* Align with the nav items */
+    margin-bottom: 2em;
+    transition: transform 0.3s ease;
+}
+
+#sidebar .logo:hover {
+    transform: scale(1.05);
+}
+
+#sidebar .logo img {
+    filter: drop-shadow(0 0 5px rgba(140, 201, 240, 0.3));
+}
+
+@media screen and (max-width: 1280px) {
+    #sidebar .logo {
+        margin-left: 0;
+        text-align: center;
+    }
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 1rem;
+}
+
+.main-logo {
+    width: 150px;
+    height: 150px;
+    filter: drop-shadow(0 0 10px rgba(140, 201, 240, 0.5));
+}
+
+@media screen and (max-width: 736px) {
+    .logo-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    
+    .main-logo {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+#sidebar nav a.logo {
+    display: block;
+    margin-bottom: 2em;
+    transition: transform 0.3s ease;
+    width: 120px;  /* Match the image width */
+}
+
+#sidebar nav a.logo:hover {
+    transform: scale(1.05);
+}
+
+#sidebar nav a.logo img {
+    filter: drop-shadow(0 0 5px rgba(140, 201, 240, 0.3));
+}
+
+#sidebar nav a.logo:after {
+    width: 120px;  /* Match the image width */
+    max-width: 120px !important;  /* Override the default max-width */
+}
+
+@media screen and (max-width: 1280px) {
+    #sidebar nav a.logo {
+        margin: 0 auto;
+    }
+}
+
+#sidebar nav ul li a.logo {
+    display: block;
+    transition: transform 0.3s ease;
+    padding: 0;  /* Remove padding */
+    width: 100%;  /* Full width container */
+    text-align: right;
+    padding-right: 3.5em;  /* Match the padding of other nav items */
+}
+
+#sidebar nav ul li a.logo:hover {
+    transform: scale(1.05);
+}
+
+#sidebar nav ul li a.logo img {
+    filter: drop-shadow(0 0 5px rgba(140, 201, 240, 0.3));
+    display: inline-block;
+    width: 120px;
+    margin-bottom: 2em;
+}
+
+#sidebar nav ul li a.logo:after {
+    content: '';
+    background-image: -moz-linear-gradient(to right, #5e42a6, #b74e91);
+    background-image: -webkit-linear-gradient(to right, #5e42a6, #b74e91);
+    background-image: -ms-linear-gradient(to right, #5e42a6, #b74e91);
+    background-image: linear-gradient(to right, #5e42a6, #b74e91);
+    position: absolute;
+    left: 0;
+    width: 100%;
+    max-width: 100% !important;
+}
+
+@media screen and (max-width: 1280px) {
+    #sidebar nav ul li a.logo {
+        text-align: center;
+        padding-right: 0;
+    }
+}
+
+/* Remove any conflicting styles */
+#sidebar .logo,
+#sidebar nav a.logo {
+    all: unset;
+}
