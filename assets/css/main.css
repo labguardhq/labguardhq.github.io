@@ -3932,15 +3932,21 @@ input, select, textarea {
 
 .logo-container {
     display: flex;
-    align-items: center;
+    align-items: center;  /* Vertically center items */
     gap: 2rem;
     margin-bottom: 1rem;
 }
 
 .main-logo {
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
     filter: drop-shadow(0 0 10px rgba(140, 201, 240, 0.5));
+    margin-bottom: 0;  /* Remove any bottom margin */
+}
+
+.logo-container h1 {
+    margin: 0;  /* Remove default margins from the heading */
+    line-height: 1;  /* Adjust line height for better alignment */
 }
 
 @media screen and (max-width: 736px) {
@@ -3999,7 +4005,7 @@ input, select, textarea {
     filter: drop-shadow(0 0 5px rgba(140, 201, 240, 0.3));
     display: inline-block;
     width: 120px;
-    margin-bottom: 2em;
+    margin-bottom: 0.5em;  /* Reduced from 2em to 0.5em */
 }
 
 #sidebar nav ul li a.logo:after {

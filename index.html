@@ -9,6 +9,7 @@
 		<title>LabGuard HQ | Streamlining Probation Testing</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
@@ -19,7 +20,7 @@
 				<div class="inner">
 					<nav>
 						<ul>
-							<li><a href="#intro" class="logo"><img src="images/logo.svg" alt="LabGuard HQ Logo" style="width: 120px; height: 120px;"/></a></li>
+							<li><a href="#intro" class="logo"><img src="images/logo.svg" alt="LabGuard HQ Logo" style="width: 100px; height: 100px;"/></a></li>
 							<li><a href="#intro">Welcome</a></li>
 							<li><a href="#one">Our Solutions</a></li>
 							<li><a href="#two">Features</a></li>
@@ -192,48 +193,19 @@
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 			<script>
-				var form = document.getElementById("contact-form");
-				var formStatus = document.getElementById("form-status");
-				
-				async function handleSubmit(event) {
-					event.preventDefault();
-					var submitButton = form.querySelector("button[type='submit']");
-					var data = new FormData(form);
-					var object = {};
-					data.forEach((value, key) => object[key] = value);
+				document.getElementById("contact-form").addEventListener("submit", function(e) {
+					const form = this;
+					const formFields = form.querySelector('.fields');
+					const formActions = form.querySelector('.actions');
+					const formStatus = document.getElementById("form-status");
 					
-					submitButton.disabled = true;
+					// Show sending message and hide form
+					formFields.style.display = 'none';
+					formActions.style.display = 'none';
 					formStatus.style.display = "block";
 					formStatus.innerHTML = "Sending message...";
-					
-					try {
-						const response = await fetch(form.action, {
-							method: form.method,
-							body: JSON.stringify(object),
-							headers: {
-								'Accept': 'application/json',
-								'Content-Type': 'application/json'
-							}
-						});
-						
-						const result = await response.json();
-						
-						if (response.ok) {
-							formStatus.innerHTML = "Thanks for your message! We'll get back to you soon.";
-							formStatus.style.color = "#8cc9f0";
-							form.reset();
-						} else {
-							throw new Error(result.error || "Oops! There was a problem sending your message.");
-						}
-					} catch (error) {
-						formStatus.innerHTML = "Oops! There was a problem sending your message. Please try again.";
-						formStatus.style.color = "#ff0000";
-					}
-					
-					submitButton.disabled = false;
-				}
-				
-				form.addEventListener("submit", handleSubmit);
+					formStatus.style.color = "#8cc9f0";
+				});
 			</script>
 
 	</body>
