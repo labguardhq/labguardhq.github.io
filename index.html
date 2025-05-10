@@ -1,209 +1,1018 @@
-<!DOCTYPE HTML>
-<!--
-	Hyperspace by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>LabGuard HQ | Streamlining Probation Testing</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LabGuard HQ - Automated Drug Test Scheduling</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛡️</text></svg>" type="image/svg+xml">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #14b8a6;
+            --secondary-dark: #0d9488;
+            --light: #f8f9ff;
+            --dark: #111827;
+            --gray: #9ca3af;
+            --gray-light: #374151;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            color: #f3f4f6;
+            background-color: #111827;
+        }
+        
+        .bg-gradient-hero {
+            background: linear-gradient(135deg, #312e81 0%, #4338ca 100%);
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .slide-in-left.visible,
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .navbar {
+            background-color: rgba(17, 24, 39, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        .hero-blob {
+            position: absolute;
+            top: 50%;
+            right: 10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.4) 0%, rgba(99, 102, 241, 0) 70%);
+            border-radius: 50%;
+            filter: blur(50px);
+            transform: translate(0, -50%);
+            z-index: 0;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            transition: all 0.2s ease-in-out;
+            display: inline-block;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.2), 0 4px 6px -2px rgba(37, 99, 235, 0.1);
+        }
+        
+        .btn-secondary {
+            background-color: rgba(99, 102, 241, 0.2);
+            color: #c7d2fe;
+            border: 1px solid var(--primary);
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            transition: all 0.2s ease-in-out;
+            display: inline-block;
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.1), 0 4px 6px -2px rgba(37, 99, 235, 0.05);
+        }
+        
+        .feature-card {
+            background: #1f2937;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.15), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease-in-out;
+            height: 100%;
+            border: 1px solid rgba(67, 56, 202, 0.05);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(67, 56, 202, 0.2);
+        }
+        
+        .feature-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 4rem;
+            height: 4rem;
+            border-radius: 1rem;
+            background: rgba(99, 102, 241, 0.3);
+            color: #c7d2fe;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .testimonial-card {
+            background: #1f2937;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.15), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease-in-out;
+            border: 1px solid rgba(67, 56, 202, 0.05);
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .pricing-card {
+            background: #1f2937;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.15), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease-in-out;
+            height: 100%;
+            border: 1px solid rgba(67, 56, 202, 0.05);
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(67, 56, 202, 0.2);
+        }
+        
+        .pricing-header {
+            padding: 2rem;
+            background: var(--primary);
+            color: white;
+        }
+        
+        .pricing-popular .pricing-header {
+            background: var(--secondary);
+        }
+        
+        .pricing-body {
+            padding: 2rem;
+        }
+        
+        .pricing-feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .pricing-feature i {
+            color: #5eead4;
+            margin-right: 0.75rem;
+        }
 
-		<!-- Sidebar -->
-			<section id="sidebar">
-				<div class="inner">
-					<nav>
-						<ul>
-							<li><a href="#intro" class="logo"><img src="images/logo.svg" alt="LabGuard HQ Logo" style="width: 100px; height: 100px;"/></a></li>
-							<li><a href="#intro">Welcome</a></li>
-							<li><a href="#one">Our Solutions</a></li>
-							<li><a href="#two">Features</a></li>
-							<li><a href="#three">Get in touch</a></li>
-						</ul>
-					</nav>
-				</div>
-			</section>
+        .standard-check {
+            color: #5eead4;
+            margin-right: 0.75rem;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #4338ca 0%, #312e81 100%);
+            color: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form select {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #4b5563;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            transition: all 0.2s;
+            background-color: #374151;
+            color: #e5e7eb;
+        }
+        
+        .contact-form input:focus,
+        .contact-form textarea:focus,
+        .contact-form select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(67, 56, 202, 0.2);
+        }
+        
+        /* Dashboard mockup styles */
+        .dashboard-mockup {
+            background: #0f172a;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        
+        .dashboard-header {
+            background: #0f172a;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: white;
+        }
+        
+        .dashboard-controls {
+            background: #0f172a;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid #1e293b;
+        }
+        
+        .dashboard-body {
+            padding: 1.5rem;
+            color: white;
+            background: #0f172a;
+        }
+        
+        .stat-card {
+            background: #1e293b;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            border: 1px solid #4f46e5;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .data-table th {
+            background: #1e293b;
+            padding: 0.75rem 1rem;
+            text-align: left;
+            font-weight: 500;
+            border-bottom: 1px solid #312e81;
+        }
+        
+        .data-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #1e293b;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        
+        .status-badge.completed {
+            background: rgba(20, 184, 166, 0.3);
+            color: #5eead4;
+        }
+        
+        .status-badge.scheduled {
+            background: rgba(99, 102, 241, 0.3);
+            color: #a5b4fc;
+        }
+        
+        .status-badge.missed {
+            background: rgba(239, 68, 68, 0.3);
+            color: #fca5a5;
+        }
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+        /* Logo styling */
+        .logo {
+            display: flex;
+            align-items: center;
+        }
 
-				<!-- Intro -->
-					<section id="intro" class="wrapper style1 fullscreen fade-up">
-						<div class="inner">
-							<div class="logo-container">
-								<img src="images/logo.svg" alt="LabGuard HQ Logo" class="main-logo" />
-								<h1>LabGuard HQ</h1>
-							</div>
-							<p>Revolutionizing probation drug testing management with intelligent scheduling, automated notifications, and comprehensive reporting.</p>
-							<ul class="actions">
-								<li><a href="#one" class="button scrolly">Discover More</a></li>
-							</ul>
-						</div>
-					</section>
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #4338ca, #312e81);
+            color: white;
+            border-radius: 8px;
+            margin-right: 10px;
+            font-size: 18px;
+        }
 
-				<!-- One -->
-					<section id="one" class="wrapper style2 spotlights">
-						<section>
-							<a href="#" class="image"><img src="images/pic01.svg" alt="Smart Scheduling" data-position="center center" /></a>
-							<div class="content">
-								<div class="inner">
-									<h2>Smart Scheduling</h2>
-									<p>Our intelligent scheduling system ensures fair and random testing assignments while maintaining compliance with court-mandated frequencies and requirements.</p>
-									<ul class="actions">
-										<li><a href="#two" class="button scrolly">Learn more</a></li>
-									</ul>
-								</div>
-							</div>
-						</section>
-						<section>
-							<a href="#" class="image"><img src="images/pic02.svg" alt="Automated Notifications" data-position="top center" /></a>
-							<div class="content">
-								<div class="inner">
-									<h2>Automated Notifications</h2>
-									<p>Keep probationers informed with automated SMS and email notifications about their testing schedules, reducing missed appointments and improving compliance rates.</p>
-									<ul class="actions">
-										<li><a href="#two" class="button scrolly">Learn more</a></li>
-									</ul>
-								</div>
-							</div>
-						</section>
-						<section>
-							<a href="#" class="image"><img src="images/pic03.svg" alt="Comprehensive Reporting" data-position="center center" /></a>
-							<div class="content">
-								<div class="inner">
-									<h2>Comprehensive Reporting</h2>
-									<p>Generate detailed reports on testing compliance, results, and trends. Make data-driven decisions with our powerful analytics dashboard.</p>
-									<ul class="actions">
-										<li><a href="#two" class="button scrolly">Learn more</a></li>
-									</ul>
-								</div>
-							</div>
-						</section>
-					</section>
+        .logo-text {
+            font-weight: 700;
+            font-size: 22px;
+            color: #c7d2fe;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar fixed w-full z-50 shadow-sm">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <a href="#" class="logo">
+                        <div class="logo-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <span class="logo-text text-indigo-200">LabGuard HQ</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#features" class="text-gray-300 hover:text-indigo-400 transition-colors">Features</a>
+                    <a href="#how-it-works" class="text-gray-300 hover:text-indigo-400 transition-colors">How It Works</a>
+                    <a href="#pricing" class="text-gray-300 hover:text-indigo-400 transition-colors">Pricing</a>
+                    <a href="#faq" class="text-gray-300 hover:text-indigo-400 transition-colors">FAQ</a>
+                    <a href="#contact" class="text-gray-300 hover:text-indigo-400 transition-colors">Contact</a>
+                </div>
+                <div class="hidden md:block">
+                    <a href="#contact" class="btn-primary">Request Demo</a>
+                </div>
+                <div class="md:hidden">
+                    <button class="text-gray-300 focus:outline-none mobile-menu-button">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <!-- Mobile menu -->
+            <div class="md:hidden hidden mobile-menu mt-4">
+                <a href="#features" class="block py-2 text-gray-300 hover:text-indigo-400 transition-colors">Features</a>
+                <a href="#how-it-works" class="block py-2 text-gray-300 hover:text-indigo-400 transition-colors">How It Works</a>
+                <a href="#pricing" class="block py-2 text-gray-300 hover:text-indigo-400 transition-colors">Pricing</a>
+                <a href="#faq" class="block py-2 text-gray-300 hover:text-indigo-400 transition-colors">FAQ</a>
+                <a href="#contact" class="block py-2 text-gray-300 hover:text-indigo-400 transition-colors">Contact</a>
+                <a href="#contact" class="btn-primary mt-4 block text-center">Request Demo</a>
+            </div>
+        </div>
+    </nav>
 
-				<!-- Two -->
-					<section id="two" class="wrapper style3 fade-up">
-						<div class="inner">
-							<h2>Key Features</h2>
-							<p>LabGuard offers a comprehensive suite of features designed to streamline probation drug testing management and improve outcomes for both administrators and probationers.</p>
-							<div class="features">
-								<section>
-									<span class="icon solid major fa-calendar"></span>
-									<h3>Intelligent Scheduling</h3>
-									<p>Random testing assignments with smart algorithms that ensure fair distribution and compliance with court orders.</p>
-								</section>
-								<section>
-									<span class="icon solid major fa-lock"></span>
-									<h3>Secure Data Management</h3>
-									<p>Industry-leading security protocols protect sensitive information and ensure HIPAA compliance.</p>
-								</section>
-								<section>
-									<span class="icon solid major fa-mobile-alt"></span>
-									<h3>Mobile Notifications</h3>
-									<p>Automated SMS and email alerts keep probationers informed of their testing schedules and requirements.</p>
-								</section>
-								<section>
-									<span class="icon solid major fa-chart-bar"></span>
-									<h3>Analytics Dashboard</h3>
-									<p>Comprehensive reporting tools provide insights into testing patterns, compliance rates, and program effectiveness.</p>
-								</section>
-								<section>
-									<span class="icon solid major fa-users"></span>
-									<h3>Case Management</h3>
-									<p>Streamlined case management tools help probation officers track and manage their caseloads efficiently.</p>
-								</section>
-								<section>
-									<span class="icon solid major fa-clock"></span>
-									<h3>24/7 Availability</h3>
-									<p>Cloud-based system ensures round-the-clock access to testing schedules and results for authorized users.</p>
-								</section>
-							</div>
-							<ul class="actions">
-								<li><a href="#three" class="button scrolly">Contact Us</a></li>
-							</ul>
-						</div>
-					</section>
+    <!-- Hero Section -->
+    <section class="relative pt-28 pb-24 bg-gradient-hero">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 fade-in">
+                    <div class="mb-8 flex">
+                        <div class="logo-icon text-4xl w-16 h-16 rounded-lg">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                    </div>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">Automated Drug Test Scheduling Made Simple</h1>
+                    <p class="text-xl text-indigo-200 mb-8">LabGuard HQ streamlines drug testing operations for counties, labs, and testing facilities with intelligent randomization, scheduling, and notification systems.</p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#contact" class="btn-primary bg-white text-indigo-900 hover:bg-gray-200 hover:text-indigo-900 font-semibold">Request Demo</a>
+                        <a href="#features" class="btn-secondary hover:bg-indigo-700 hover:text-white">Explore Features</a>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 mt-12 lg:mt-0 fade-in">
+                    <div class="dashboard-mockup mx-auto max-w-lg shadow-2xl">
+                        <div class="dashboard-header">
+                            <div class="flex items-center">
+                                <div class="w-3 h-3 rounded-full bg-red-400 mr-2"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-300 mr-2"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-400 mr-2"></div>
+                                <span class="ml-2 font-medium">LabGuard HQ Dashboard</span>
+                            </div>
+                            <div>
+                                <span class="text-sm text-gray-400">County Health Department</span>
+                            </div>
+                        </div>
+                        <div class="dashboard-controls">
+                            <div class="flex flex-wrap items-center justify-between">
+                                <div class="flex items-center space-x-4">
+                                    <select class="bg-slate-800 text-indigo-200 text-sm rounded px-3 py-1 border border-indigo-900" style="background-color: #0f172a; color: #c7d2fe;">
+                                        <option style="background-color: #0f172a;">All Programs</option>
+                                        <option style="background-color: #0f172a;">Probation</option>
+                                        <option style="background-color: #0f172a;">Court-ordered</option>
+                                        <option style="background-color: #0f172a;">Pre-employment</option>
+                                    </select>
+                                    <select class="bg-slate-800 text-indigo-200 text-sm rounded px-3 py-1 border border-indigo-900" style="background-color: #0f172a; color: #c7d2fe;">
+                                        <option style="background-color: #0f172a;">This Month</option>
+                                        <option style="background-color: #0f172a;">Last Month</option>
+                                        <option style="background-color: #0f172a;">This Quarter</option>
+                                        <option style="background-color: #0f172a;">Custom Range</option>
+                                    </select>
+                                </div>
+                                <button class="bg-indigo-700 text-white text-sm rounded px-3 py-1 flex items-center mt-2 sm:mt-0 border border-indigo-500 hover:bg-indigo-600">
+                                    <i class="fas fa-plus mr-2"></i> Schedule Tests
+                                </button>
+                            </div>
+                        </div>
+                        <div class="dashboard-body">
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                                <div class="stat-card">
+                                    <p class="text-indigo-300 text-sm mb-1">Tests This Month</p>
+                                    <p class="text-2xl font-bold text-white">247</p>
+                                    <p class="text-emerald-400 text-sm"><i class="fas fa-arrow-up mr-1"></i> 12% from last month</p>
+                                </div>
+                                <div class="stat-card">
+                                    <p class="text-indigo-300 text-sm mb-1">Compliance Rate</p>
+                                    <p class="text-2xl font-bold text-white">94.2%</p>
+                                    <p class="text-emerald-400 text-sm"><i class="fas fa-arrow-up mr-1"></i> 3.1% from last month</p>
+                                </div>
+                                <div class="stat-card">
+                                    <p class="text-indigo-300 text-sm mb-1">Pending Results</p>
+                                    <p class="text-2xl font-bold text-white">18</p>
+                                    <p class="text-indigo-400 text-sm">Expected today: 12</p>
+                                </div>
+                            </div>
+                            <h3 class="text-lg font-semibold mb-4">Recent Tests</h3>
+                            <div class="overflow-x-auto">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Subject</th>
+                                            <th>Date</th>
+                                            <th>Status</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>#8294</td>
+                                            <td>John D.</td>
+                                            <td>May 8, 2025</td>
+                                            <td><span class="status-badge completed">Completed</span></td>
+                                            <td><i class="fas fa-ellipsis-h text-gray-500"></i></td>
+                                        </tr>
+                                        <tr>
+                                            <td>#8293</td>
+                                            <td>Sarah M.</td>
+                                            <td>May 8, 2025</td>
+                                            <td><span class="status-badge completed">Completed</span></td>
+                                            <td><i class="fas fa-ellipsis-h text-gray-500"></i></td>
+                                        </tr>
+                                        <tr>
+                                            <td>#8292</td>
+                                            <td>Robert L.</td>
+                                            <td>May 7, 2025</td>
+                                            <td><span class="status-badge missed">Missed</span></td>
+                                            <td><i class="fas fa-ellipsis-h text-gray-500"></i></td>
+                                        </tr>
+                                        <tr>
+                                            <td>#8291</td>
+                                            <td>Emily K.</td>
+                                            <td>May 7, 2025</td>
+                                            <td><span class="status-badge completed">Completed</span></td>
+                                            <td><i class="fas fa-ellipsis-h text-gray-500"></i></td>
+                                        </tr>
+                                        <tr>
+                                            <td>#8290</td>
+                                            <td>Michael F.</td>
+                                            <td>May 6, 2025</td>
+                                            <td><span class="status-badge scheduled">Scheduled</span></td>
+                                            <td><i class="fas fa-ellipsis-h text-gray-500"></i></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-blob"></div>
+    </section>
 
-				<!-- Three -->
-					<section id="three" class="wrapper style1 fade-up">
-						<div class="inner">
-							<h2>Get in touch</h2>
-							<p>Interested in learning how LabGuard can transform your probation testing program? Contact us today for a demo or more information about our solutions.</p>
-							<div class="split style1">
-								<section>
-									<form id="contact-form" action="https://formspree.io/f/xovdwnba" method="POST">
-										<div class="fields">
-											<div class="field half">
-												<label for="name">Name</label>
-												<input type="text" name="name" id="name" required />
-											</div>
-											<div class="field half">
-												<label for="email">Email</label>
-												<input type="email" name="email" id="email" required />
-											</div>
-											<div class="field">
-												<label for="message">Message</label>
-												<textarea name="message" id="message" rows="5" required></textarea>
-											</div>
-										</div>
-										<div id="form-status" style="display: none; margin-bottom: 1em;"></div>
-										<ul class="actions">
-											<li><button type="submit" class="button submit">Send Message</button></li>
-										</ul>
-									</form>
-								</section>
-								<section>
-									<ul class="contact">
-										<li>
-											<h3>Email</h3>
-											<a href="#">sales@labguardhq.com</a>
-										</li>
-									</ul>
-								</section>
-							</div>
-						</div>
-					</section>
+    <!-- Features Section -->
+    <section id="features" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Comprehensive Drug Testing Management</h2>
+                <p class="text-xl text-gray-300">Our platform offers everything you need to streamline your drug testing operations.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
+                <div class="feature-card fade-in" style="transition-delay: 0.1s;">
+                    <div class="feature-icon">
+                        <i class="fas fa-random"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Intelligent Scheduling</h3>
+                    <p class="text-gray-300">Random testing assignments with smart algorithms that ensure fair distribution and compliance with court orders. Balance lab capacity and optimize resource allocation automatically.</p>
+                </div>
+                
+                <div class="feature-card fade-in" style="transition-delay: 0.2s;">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Secure Data Management</h3>
+                    <p class="text-gray-300">Industry-leading security protocols protect sensitive information and ensure HIPAA compliance. Enterprise-grade security with role-based access controls and comprehensive audit logs.</p>
+                </div>
+                
+                <div class="feature-card fade-in" style="transition-delay: 0.3s;">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Mobile Notifications</h3>
+                    <p class="text-gray-300">Automated SMS and email alerts keep probationers informed of their testing schedules and requirements. Reduce no-shows with timely reminders and follow-ups.</p>
+                </div>
+                
+                <div class="feature-card fade-in" style="transition-delay: 0.4s;">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Analytics Dashboard</h3>
+                    <p class="text-gray-300">Comprehensive reporting tools provide insights into testing patterns, compliance rates, and program effectiveness. Make data-driven decisions with intuitive visualizations.</p>
+                </div>
+                
+                <div class="feature-card fade-in" style="transition-delay: 0.5s;">
+                    <div class="feature-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Case Management</h3>
+                    <p class="text-gray-300">Streamlined case management tools help probation officers track and manage their caseloads efficiently. Maintain comprehensive records and monitor participant progress.</p>
+                </div>
+                
+                <div class="feature-card fade-in" style="transition-delay: 0.6s;">
+                    <div class="feature-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">24/7 Availability</h3>
+                    <p class="text-gray-300">Cloud-based system ensures round-the-clock access to testing schedules and results for authorized users. Access critical information from anywhere, anytime.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-20 bg-indigo-900 bg-opacity-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">How LabGuard HQ Works</h2>
+                <p class="text-xl text-gray-300">Our streamlined process makes drug testing management effortless.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
+                <div class="text-center fade-in" style="transition-delay: 0.1s;">
+                    <div class="w-20 h-20 bg-indigo-700 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">1</div>
+                    <h3 class="text-xl font-bold mb-3">Setup Your Program</h3>
+                    <p class="text-gray-300">Configure your testing programs, subject pools, frequency requirements, and notification preferences. Import existing data or start fresh.</p>
+                </div>
+                
+                <div class="text-center fade-in" style="transition-delay: 0.2s;">
+                    <div class="w-20 h-20 bg-indigo-700 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">2</div>
+                    <h3 class="text-xl font-bold mb-3">Generate Test Schedules</h3>
+                    <p class="text-gray-300">Use our randomization engine to generate unbiased test schedules. Review and approve the schedules or let the system run automatically.</p>
+                </div>
+                
+                <div class="text-center fade-in" style="transition-delay: 0.3s;">
+                    <div class="w-20 h-20 bg-indigo-700 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">3</div>
+                    <h3 class="text-xl font-bold mb-3">Automated Notifications</h3>
+                    <p class="text-gray-300">The system automatically notifies subjects and administrators about upcoming tests through your preferred channels.</p>
+                </div>
+            </div>
+            
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
+                <div class="text-center fade-in" style="transition-delay: 0.4s;">
+                    <div class="w-20 h-20 bg-indigo-700 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">4</div>
+                    <h3 class="text-xl font-bold mb-3">Track Compliance</h3>
+                    <p class="text-gray-300">Monitor test completion, record results, and track compliance in real-time through our user-friendly dashboard.</p>
+                </div>
+                
+                <div class="text-center fade-in" style="transition-delay: 0.5s;">
+                    <div class="w-20 h-20 bg-indigo-700 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">5</div>
+                    <h3 class="text-xl font-bold mb-3">Analyze Results</h3>
+                    <p class="text-gray-300">Generate comprehensive reports and analytics to evaluate program effectiveness and meet regulatory requirements.</p>
+                </div>
+                
+                <div class="text-center fade-in" style="transition-delay: 0.6s;">
+                    <div class="w-20 h-20 bg-indigo-700 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">6</div>
+                    <h3 class="text-xl font-bold mb-3">Continuous Improvement</h3>
+                    <p class="text-gray-300">Use insights from analytics to refine your testing programs, improving efficiency and effectiveness over time.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-			</div>
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Flexible Pricing</h2>
+                <p class="text-xl text-gray-300">Customized solutions tailored to your organization's needs</p>
+            </div>
+            
+            <div class="pricing-card fade-in w-3/4 mx-auto">
+                <div class="pricing-header">
+                    <h3 class="text-xl font-bold mb-2">Custom Solutions</h3>
+                </div>
+                <div class="pricing-body">
+                    <div class="mb-6">
+                        <p class="text-gray-300 mb-6">Our pricing depends on several factors including the size of your organization, number of subjects, required features, and implementation complexity.</p>
+                    </div>
+                    <div class="mb-8">
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Tailored to your specific requirements</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Scalable solutions for organizations of all sizes</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Flexible implementation options</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Personalized support packages</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Transparent pricing with no hidden fees</span>
+                        </div>
+                    </div>
+                    <a href="#contact" class="btn-primary w-full text-center">Contact Us For Pricing</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+    <!-- Key Benefits Section -->
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Key Benefits</h2>
+                <p class="text-xl text-gray-300">Discover why testing facilities and probation departments choose LabGuard HQ</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+                <div class="bg-gray-800 rounded-lg shadow-lg p-8 fade-in slide-in-left border border-indigo-800">
+                    <h3 class="text-2xl font-bold mb-6 text-indigo-200">For Testing Facilities</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-check standard-check mt-1"></i>
+                            <p class="text-gray-300">Optimize lab capacity with evenly distributed testing schedules</p>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check standard-check mt-1"></i>
+                            <p class="text-gray-300">Reduce administrative work with automated notification systems</p>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check standard-check mt-1"></i>
+                            <p class="text-gray-300">Lower no-show rates with SMS and email reminders</p>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check standard-check mt-1"></i>
+                            <p class="text-gray-300">Generate detailed reports for compliance and auditing purposes</p>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check standard-check mt-1"></i>
+                            <p class="text-gray-300">Access secure testing records from anywhere, 24/7</p>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="bg-gray-800 rounded-lg shadow-lg p-8 fade-in slide-in-right border border-indigo-800">
+                    <h3 class="text-2xl font-bold mb-6 text-teal-200">For Probation Departments</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-check standard-check mt-1"></i>
+                            <p class="text-gray-300">Streamline caseload management with integrated case tracking tools</p>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check standard-check mt-1"></i>
+                            <p class="text-gray-300">Monitor compliance in real-time with detailed dashboards</p>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check standard-check mt-1"></i>
+                            <p class="text-gray-300">Improve accountability with comprehensive audit trails</p>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check standard-check mt-1"></i>
+                            <p class="text-gray-300">Reduce staff workload with automated scheduling and notification</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="py-10 mb-20">
+        <div class="container mx-auto px-6">
+            <div class="cta-section p-12 fade-in">
+                <div class="px-4">
+                    <div class="text-center">
+                        <h2 class="text-3xl font-bold mb-4">Ready to Transform Your Drug Testing Program?</h2>
+                        <p class="text-xl text-indigo-200 mb-6">Join hundreds of counties and testing facilities using LabGuard HQ to streamline operations and improve compliance.</p>
+                        <div class="mt-6">
+                            <a href="#contact" class="btn-primary bg-white text-indigo-900 hover:bg-gray-200 font-semibold">Schedule a Demo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-		<!-- Footer -->
-			<footer id="footer" class="wrapper style1-alt">
-				<div class="inner">
-					<ul class="menu">
-						<li>&copy; LabGuard HQ. All rights reserved.</li>
-					</ul>
-				</div>
-			</footer>
+    <!-- Contact Section -->
+    <section id="contact" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Get in Touch</h2>
+                <p class="text-xl text-gray-300">Interested in learning more about LabGuard HQ? We'd love to hear from you.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start px-4">
+                <div class="fade-in slide-in-left bg-gray-800 rounded-lg shadow-lg p-8 border border-indigo-800">
+                    <form id="contact-form" class="contact-form" action="https://formspree.io/f/xovdwnba" method="POST">
+                        <input type="hidden" name="_subject" value="New LabGuard HQ Contact Request">
+                        <div id="form-status" style="display: none; margin-bottom: 1em;"></div>
+                        <h3 class="text-2xl font-bold mb-6">Contact Us</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-300 mb-1">First Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div>
+                                <label for="last-name" class="block text-sm font-medium text-gray-300 mb-1">Last Name</label>
+                                <input type="text" id="last-name" name="last-name" required>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="block text-sm font-medium text-gray-300 mb-1">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="organization" class="block text-sm font-medium text-gray-300 mb-1">Organization</label>
+                            <input type="text" id="organization" name="organization" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="interest" class="block text-sm font-medium text-gray-300 mb-1">I'm interested in</label>
+                            <select id="interest" name="interest" required>
+                                <option value="" disabled selected>Select an option</option>
+                                <option value="demo">Scheduling a demo</option>
+                                <option value="pricing">Pricing information</option>
+                                <option value="question">General questions</option>
+                                <option value="feature">Feature requests</option>
+                            </select>
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block text-sm font-medium text-gray-300 mb-1">Message</label>
+                            <textarea id="message" name="message" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary w-full">Send Message</button>
+                    </form>
+                </div>
+                
+                <div class="fade-in slide-in-right">
+                    <div class="bg-gray-800 rounded-lg shadow-lg p-8 border border-indigo-800">
+                        <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
+                        <div class="space-y-6 mb-8">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-indigo-900 flex items-center justify-center mr-4">
+                                    <i class="fas fa-envelope text-indigo-200"></i>
+                                </div>
+                                <div>
+                                    <p class="text-white font-medium">Email</p>
+                                    <a href="mailto:sales@labguardhq.com" class="text-indigo-200 hover:underline">sales@labguardhq.com</a>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-indigo-900 flex items-center justify-center mr-4">
+                                    <i class="fas fa-phone-alt text-indigo-200"></i>
+                                </div>
+                                <div>
+                                    <p class="text-white font-medium">Phone</p>
+                                    <p class="text-gray-300">+1 (650) 743-0366</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-lg font-semibold mb-4">Quick Answers</h4>
+                            <div class="space-y-4">
+                                <div class="flex items-start">
+                                    <i class="fas fa-check standard-check mt-1"></i>
+                                    <div>
+                                        <p class="font-medium text-white">Implementation Time</p>
+                                        <p class="text-gray-300">Most clients are up and running within 2-4 weeks, depending on complexity.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <i class="fas fa-check standard-check mt-1"></i>
+                                    <div>
+                                        <p class="font-medium text-white">Regulatory Compliance</p>
+                                        <p class="text-gray-300">Our system meets all relevant requirements for random drug testing programs.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <i class="fas fa-check standard-check mt-1"></i>
+                                    <div>
+                                        <p class="font-medium text-white">System Integration</p>
+                                        <p class="text-gray-300">We offer API access and custom integrations with your existing systems.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-			<script>
-				document.getElementById("contact-form").addEventListener("submit", function(e) {
-					const form = this;
-					const formFields = form.querySelector('.fields');
-					const formActions = form.querySelector('.actions');
-					const formStatus = document.getElementById("form-status");
-					
-					// Show sending message and hide form
-					formFields.style.display = 'none';
-					formActions.style.display = 'none';
-					formStatus.style.display = "block";
-					formStatus.innerHTML = "Sending message...";
-					formStatus.style.color = "#8cc9f0";
-				});
-			</script>
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 bg-indigo-900 bg-opacity-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
+                <p class="text-xl text-gray-300">Get answers to common questions about LabGuard HQ</p>
+            </div>
 
-	</body>
+            <div class="bg-gray-800 rounded-lg shadow-lg p-8 max-w-4xl mx-auto fade-in border border-indigo-800">
+                <div class="space-y-6">
+                    <div class="border-b border-gray-700 pb-6">
+                        <p class="font-medium text-white text-lg mb-2">How quickly can we implement LabGuard HQ?</p>
+                        <p class="text-gray-300">Most clients are up and running within 2-4 weeks, depending on the complexity of your program and data migration needs.</p>
+                    </div>
+                    <div class="border-b border-gray-700 pb-6">
+                        <p class="font-medium text-white text-lg mb-2">Is LabGuard HQ compliant with relevant regulations?</p>
+                        <p class="text-gray-300">Yes, our system is designed to meet all relevant regulatory requirements for random drug testing programs.</p>
+                    </div>
+                    <div class="border-b border-gray-700 pb-6">
+                        <p class="font-medium text-white text-lg mb-2">Can LabGuard HQ integrate with our existing systems?</p>
+                        <p class="text-gray-300">We offer robust API access and can develop custom integrations with your existing case management, laboratory, or reporting systems.</p>
+                    </div>
+                    <div class="border-b border-gray-700 pb-6">
+                        <p class="font-medium text-white text-lg mb-2">What kind of support is included?</p>
+                        <p class="text-gray-300">All clients receive comprehensive support, including implementation assistance, training, and ongoing technical support. Support packages are tailored to your organization's specific needs.</p>
+                    </div>
+                    <div class="border-b border-gray-700 pb-6">
+                        <p class="font-medium text-white text-lg mb-2">Is the system accessible from mobile devices?</p>
+                        <p class="text-gray-300">Yes, LabGuard HQ is fully responsive and works seamlessly on smartphones, tablets, and desktop computers, allowing authorized users to access the system from anywhere.</p>
+                    </div>
+                    <div>
+                        <p class="font-medium text-white text-lg mb-2">How secure is LabGuard HQ?</p>
+                        <p class="text-gray-300">Security is our top priority. We employ enterprise-grade encryption, secure authentication methods, role-based access controls, and regular security audits to ensure your data remains protected.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-gray-400">&copy; 2025 LabGuard HQ. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.querySelector('.mobile-menu-button');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                const expanded = mobileMenuButton.getAttribute('aria-expanded') === 'true' || false;
+                mobileMenuButton.setAttribute('aria-expanded', !expanded);
+            });
+        }
+        
+        // Scroll animations
+        function revealOnScroll() {
+            const fadeElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right');
+            
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+        
+        // Initialize animations
+        window.addEventListener('DOMContentLoaded', () => {
+            revealOnScroll();
+        });
+        
+        // Scroll events
+        window.addEventListener('scroll', () => {
+            revealOnScroll();
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+
+        // Contact form handling
+        const contactForm = document.getElementById('contact-form');
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                // Let formspree handle the submission
+                // We don't need to prevent default as we want the form to actually submit to Formspree
+
+                // Add loading state indicator
+                const submitButton = contactForm.querySelector('button[type="submit"]');
+                const originalText = submitButton.innerText;
+                submitButton.innerText = 'Sending...';
+                submitButton.disabled = true;
+
+                // Get the form status element
+                let formStatus = document.getElementById('form-status');
+
+                // Let formspree handle the form submission
+                fetch(contactForm.action, {
+                    method: contactForm.method,
+                    body: new FormData(contactForm),
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    }
+                    throw new Error('Network response was not ok.');
+                })
+                .then(data => {
+                    // Show success message
+                    formStatus.innerHTML = '<div class="p-4 bg-green-800 text-white rounded">Thank you! Your message has been sent successfully.</div>';
+                    formStatus.style.display = 'block';
+                    contactForm.reset();
+
+                    // Reset button
+                    submitButton.innerText = originalText;
+                    submitButton.disabled = false;
+
+                    // Hide success message after 5 seconds
+                    setTimeout(() => {
+                        formStatus.style.display = 'none';
+                    }, 5000);
+                })
+                .catch(error => {
+                    // Show error message
+                    formStatus.innerHTML = '<div class="p-4 bg-red-800 text-white rounded">Oops! There was a problem sending your message. Please try again.</div>';
+                    formStatus.style.display = 'block';
+
+                    // Reset button
+                    submitButton.innerText = originalText;
+                    submitButton.disabled = false;
+                });
+
+                e.preventDefault(); // Prevent the default form submission
+            });
+        }
+    </script>
+</body>
 </html>
