@@ -18,44 +18,146 @@
             --gray: #9ca3af;
             --gray-light: #374151;
         }
-        
+
         html {
             scroll-behavior: smooth;
         }
-        
+
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             color: #f3f4f6;
             background-color: #111827;
+            font-size: 16px;
+            line-height: 1.6;
+            -webkit-text-size-adjust: 100%;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Improved mobile typography */
+        h1, h2, h3, h4, h5, h6 {
+            line-height: 1.2;
+            letter-spacing: -0.01em;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+        }
+
+        h3 {
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+        }
+
+        p {
+            max-width: 65ch;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Mobile-optimized paragraph text */
+        @media (max-width: 640px) {
+            p {
+                line-height: 1.5;
+                font-size: 0.9375rem; /* 15px - slightly larger than default small text */
+                letter-spacing: 0.01em; /* Slightly increased letter spacing for readability */
+            }
+
+            .text-sm {
+                line-height: 1.5;
+                letter-spacing: 0.01em;
+            }
+        }
+
+        /* Improved contrast for text */
+        .text-gray-300 {
+            color: #d1d5db; /* Slightly brighter than default for better contrast on dark backgrounds */
+        }
+
+        /* Mobile menu animation */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in-down {
+            animation: fadeInDown 0.3s ease-out;
         }
         
         .bg-gradient-hero {
             background: linear-gradient(135deg, #312e81 0%, #4338ca 100%);
         }
         
+        /* Mobile-optimized animations with reduced motion for better performance */
         .fade-in {
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            transform: translateY(10px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
         }
-        
+
+        @media (min-width: 640px) {
+            .fade-in {
+                transform: translateY(20px);
+                transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            }
+        }
+
+        /* Respect reduced motion preferences */
+        @media (prefers-reduced-motion: reduce) {
+            .fade-in {
+                transform: none;
+                transition: opacity 0.3s ease-out;
+            }
+        }
+
         .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
         }
-        
+
         .slide-in-left {
             opacity: 0;
-            transform: translateX(-50px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            transform: translateX(-25px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
         }
-        
+
         .slide-in-right {
             opacity: 0;
-            transform: translateX(50px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            transform: translateX(25px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
         }
-        
+
+        @media (min-width: 640px) {
+            .slide-in-left {
+                transform: translateX(-50px);
+                transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            }
+
+            .slide-in-right {
+                transform: translateX(50px);
+                transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            }
+        }
+
+        /* Respect reduced motion preferences */
+        @media (prefers-reduced-motion: reduce) {
+            .slide-in-left,
+            .slide-in-right {
+                transform: none;
+                transition: opacity 0.3s ease-out;
+            }
+        }
+
         .slide-in-left.visible,
         .slide-in-right.visible {
             opacity: 1;
@@ -71,196 +173,405 @@
         .hero-blob {
             position: absolute;
             top: 50%;
-            right: 10%;
-            width: 600px;
-            height: 600px;
+            right: 0;
+            width: 80vw;
+            max-width: 600px;
+            height: 80vw;
+            max-height: 600px;
             background: radial-gradient(circle, rgba(99, 102, 241, 0.4) 0%, rgba(99, 102, 241, 0) 70%);
             border-radius: 50%;
             filter: blur(50px);
-            transform: translate(0, -50%);
+            transform: translate(30%, -50%);
             z-index: 0;
+            opacity: 0.7;
+
+            @media (min-width: 768px) {
+                right: 10%;
+                transform: translate(0, -50%);
+                opacity: 1;
+            }
         }
         
+        /* Mobile-optimized buttons with better touch targets */
         .btn-primary {
             background-color: var(--primary);
             color: white;
-            padding: 0.75rem 1.5rem;
+            padding: 0.875rem 1.5rem;
             border-radius: 0.5rem;
             font-weight: 500;
             transition: all 0.2s ease-in-out;
             display: inline-block;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            min-height: 44px; /* Minimum touch target size */
+            min-width: 44px;
+            cursor: pointer;
+            text-align: center;
         }
-        
-        .btn-primary:hover {
+
+        @media (hover: hover) {
+            .btn-primary:hover {
+                background-color: var(--primary-dark);
+                transform: translateY(-2px);
+                box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.2), 0 4px 6px -2px rgba(37, 99, 235, 0.1);
+            }
+        }
+
+        /* Active state for touch devices */
+        .btn-primary:active {
             background-color: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.2), 0 4px 6px -2px rgba(37, 99, 235, 0.1);
+            transform: translateY(1px);
+            box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2);
         }
-        
+
         .btn-secondary {
             background-color: rgba(99, 102, 241, 0.2);
             color: #c7d2fe;
             border: 1px solid var(--primary);
-            padding: 0.75rem 1.5rem;
+            padding: 0.875rem 1.5rem;
             border-radius: 0.5rem;
             font-weight: 500;
             transition: all 0.2s ease-in-out;
             display: inline-block;
+            min-height: 44px; /* Minimum touch target size */
+            min-width: 44px;
+            cursor: pointer;
+            text-align: center;
         }
-        
-        .btn-secondary:hover {
+
+        @media (hover: hover) {
+            .btn-secondary:hover {
+                background-color: var(--primary);
+                color: white;
+                transform: translateY(-2px);
+                box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.1), 0 4px 6px -2px rgba(37, 99, 235, 0.05);
+            }
+        }
+
+        /* Active state for touch devices */
+        .btn-secondary:active {
             background-color: var(--primary);
             color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.1), 0 4px 6px -2px rgba(37, 99, 235, 0.05);
+            transform: translateY(1px);
+            box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2);
         }
         
         .feature-card {
             background: #1f2937;
-            border-radius: 1rem;
-            padding: 2rem;
+            border-radius: 0.75rem;
+            padding: 1.25rem;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.15), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease-in-out;
             height: 100%;
             border: 1px solid rgba(67, 56, 202, 0.05);
         }
-        
+
+        @media (min-width: 640px) {
+            .feature-card {
+                border-radius: 1rem;
+                padding: 1.5rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .feature-card {
+                padding: 2rem;
+            }
+        }
+
         .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -5px rgba(0, 0, 0, 0.2), 0 5px 10px -5px rgba(0, 0, 0, 0.1);
             border: 1px solid rgba(67, 56, 202, 0.2);
         }
-        
+
+        @media (min-width: 768px) {
+            .feature-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+            }
+        }
+
         .feature-icon {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 4rem;
-            height: 4rem;
-            border-radius: 1rem;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 0.75rem;
             background: rgba(99, 102, 241, 0.3);
             color: #c7d2fe;
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        @media (min-width: 640px) {
+            .feature-icon {
+                width: 3.5rem;
+                height: 3.5rem;
+                border-radius: 0.75rem;
+                margin-bottom: 1.25rem;
+                font-size: 1.375rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .feature-icon {
+                width: 4rem;
+                height: 4rem;
+                border-radius: 1rem;
+                margin-bottom: 1.5rem;
+                font-size: 1.5rem;
+            }
         }
         
+        /* Mobile-optimized card components */
         .testimonial-card {
             background: #1f2937;
-            border-radius: 1rem;
-            padding: 2rem;
+            border-radius: 0.75rem;
+            padding: 1.25rem;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.15), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease-in-out;
             border: 1px solid rgba(67, 56, 202, 0.05);
         }
-        
-        .testimonial-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+        @media (min-width: 640px) {
+            .testimonial-card {
+                border-radius: 1rem;
+                padding: 1.5rem;
+            }
         }
-        
+
+        @media (min-width: 768px) {
+            .testimonial-card {
+                padding: 2rem;
+            }
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -5px rgba(0, 0, 0, 0.1), 0 5px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        @media (min-width: 768px) {
+            .testimonial-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            }
+        }
+
         .pricing-card {
             background: #1f2937;
-            border-radius: 1rem;
+            border-radius: 0.75rem;
             overflow: hidden;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.15), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease-in-out;
             height: 100%;
             border: 1px solid rgba(67, 56, 202, 0.05);
+            width: 100%;
         }
-        
+
+        @media (min-width: 640px) {
+            .pricing-card {
+                border-radius: 1rem;
+            }
+        }
+
         .pricing-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -5px rgba(0, 0, 0, 0.2), 0 5px 10px -5px rgba(0, 0, 0, 0.1);
             border: 1px solid rgba(67, 56, 202, 0.2);
         }
-        
+
+        @media (min-width: 768px) {
+            .pricing-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+            }
+        }
+
         .pricing-header {
-            padding: 2rem;
+            padding: 1.25rem;
             background: var(--primary);
             color: white;
         }
-        
+
+        @media (min-width: 640px) {
+            .pricing-header {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .pricing-header {
+                padding: 2rem;
+            }
+        }
+
         .pricing-popular .pricing-header {
             background: var(--secondary);
         }
-        
+
         .pricing-body {
-            padding: 2rem;
+            padding: 1.25rem;
+        }
+
+        @media (min-width: 640px) {
+            .pricing-body {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .pricing-body {
+                padding: 2rem;
+            }
         }
         
+        /* Mobile-optimized pricing features and CTA section */
         .pricing-feature {
             display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
+            align-items: flex-start; /* Better alignment for multi-line text */
+            margin-bottom: 0.75rem;
+            padding: 0.25rem 0;      /* Add padding for better touch target */
         }
-        
+
+        @media (min-width: 640px) {
+            .pricing-feature {
+                margin-bottom: 1rem;
+            }
+        }
+
         .pricing-feature i {
             color: #5eead4;
             margin-right: 0.75rem;
+            min-width: 1rem;       /* Prevent icon from shrinking */
+            margin-top: 0.25rem;    /* Align with first line of text */
         }
 
         .standard-check {
             color: #5eead4;
             margin-right: 0.75rem;
+            min-width: 1rem;       /* Prevent icon from shrinking */
+            display: inline-block;
         }
-        
+
         .cta-section {
             background: linear-gradient(135deg, #4338ca 0%, #312e81 100%);
             color: white;
-            border-radius: 1rem;
+            border-radius: 0.75rem;
             overflow: hidden;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 15px -5px rgba(0, 0, 0, 0.15), 0 5px 10px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (min-width: 640px) {
+            .cta-section {
+                border-radius: 1rem;
+                box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+            }
         }
         
+        /* Mobile-optimized form fields with better touch targets */
         .contact-form input,
         .contact-form textarea,
         .contact-form select {
             width: 100%;
-            padding: 0.75rem 1rem;
+            padding: 0.875rem 1rem;
             border: 1px solid #4b5563;
             border-radius: 0.5rem;
             margin-bottom: 1rem;
             transition: all 0.2s;
             background-color: #374151;
             color: #e5e7eb;
+            font-size: 16px; /* Prevent iOS zoom on focus */
+            min-height: 44px; /* Minimum touch target height */
+            -webkit-appearance: none; /* Remove default styling on iOS */
+            -moz-appearance: none;
+            appearance: none;
         }
-        
+
+        .contact-form textarea {
+            min-height: 100px; /* Taller for better usability */
+            line-height: 1.5;
+        }
+
+        .contact-form select {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23a1a1aa'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+            background-position: right 0.75rem center;
+            background-repeat: no-repeat;
+            background-size: 1rem;
+            padding-right: 2.5rem;
+        }
+
         .contact-form input:focus,
         .contact-form textarea:focus,
         .contact-form select:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(67, 56, 202, 0.2);
+            box-shadow: 0 0 0 3px rgba(67, 56, 202, 0.3);
+            color: white;
+        }
+
+        /* Improved focus indicators for accessibility */
+        .contact-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
         }
         
         /* Dashboard mockup styles */
         .dashboard-mockup {
             background: #0f172a;
-            border-radius: 1rem;
+            border-radius: 0.75rem;
             overflow: hidden;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            font-size: 0.875rem;
         }
-        
+
+        @media (min-width: 640px) {
+            .dashboard-mockup {
+                border-radius: 1rem;
+                font-size: 1rem;
+            }
+        }
+
         .dashboard-header {
             background: #0f172a;
-            padding: 1rem 1.5rem;
+            padding: 0.75rem 1rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
             color: white;
         }
-        
+
+        @media (min-width: 640px) {
+            .dashboard-header {
+                padding: 1rem 1.5rem;
+            }
+        }
+
         .dashboard-controls {
             background: #0f172a;
-            padding: 1rem 1.5rem;
+            padding: 0.75rem 1rem;
             border-bottom: 1px solid #1e293b;
         }
-        
+
+        @media (min-width: 640px) {
+            .dashboard-controls {
+                padding: 1rem 1.5rem;
+            }
+        }
+
         .dashboard-body {
-            padding: 1.5rem;
+            padding: 1rem;
             color: white;
             background: #0f172a;
+        }
+
+        @media (min-width: 640px) {
+            .dashboard-body {
+                padding: 1.5rem;
+            }
         }
         
         .stat-card {
@@ -271,70 +582,154 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
         }
         
+        /* Mobile-responsive data tables */
         .data-table {
             width: 100%;
             border-collapse: collapse;
         }
-        
+
         .data-table th {
             background: #1e293b;
-            padding: 0.75rem 1rem;
+            padding: 0.5rem 0.5rem;
             text-align: left;
             font-weight: 500;
             border-bottom: 1px solid #312e81;
-        }
-        
-        .data-table td {
-            padding: 0.75rem 1rem;
-            border-bottom: 1px solid #1e293b;
-        }
-        
-        .status-badge {
-            display: inline-block;
-            padding: 0.25rem 0.5rem;
-            border-radius: 9999px;
             font-size: 0.75rem;
-            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        @media (min-width: 640px) {
+            .data-table th {
+                padding: 0.75rem 1rem;
+                font-size: 0.875rem;
+            }
+        }
+
+        .data-table td {
+            padding: 0.5rem 0.5rem;
+            border-bottom: 1px solid #1e293b;
+            font-size: 0.75rem;
+            white-space: nowrap;
+        }
+
+        @media (min-width: 640px) {
+            .data-table td {
+                padding: 0.75rem 1rem;
+                font-size: 0.875rem;
+            }
+        }
+
+        /* Make tables responsive with horizontal scroll */
+        .overflow-x-auto {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;  /* Smooth scrolling on iOS */
+            scrollbar-width: thin;             /* Firefox */
+            max-width: 100%;
+        }
+
+        .overflow-x-auto::-webkit-scrollbar {
+            height: 6px;                       /* Chrome, Safari scrollbar height */
+        }
+
+        .overflow-x-auto::-webkit-scrollbar-thumb {
+            background-color: rgba(99, 102, 241, 0.3);
+            border-radius: 3px;
         }
         
+        /* Mobile-optimized status badges */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.25rem 0.375rem;
+            border-radius: 9999px;
+            font-size: 0.6875rem;
+            font-weight: 500;
+            min-width: 65px;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        @media (min-width: 640px) {
+            .status-badge {
+                padding: 0.25rem 0.5rem;
+                font-size: 0.75rem;
+                min-width: 80px;
+            }
+        }
+
         .status-badge.completed {
             background: rgba(20, 184, 166, 0.3);
             color: #5eead4;
+            border: 1px solid rgba(20, 184, 166, 0.5);
         }
-        
+
         .status-badge.scheduled {
             background: rgba(99, 102, 241, 0.3);
             color: #a5b4fc;
+            border: 1px solid rgba(99, 102, 241, 0.5);
         }
-        
+
         .status-badge.missed {
             background: rgba(239, 68, 68, 0.3);
             color: #fca5a5;
+            border: 1px solid rgba(239, 68, 68, 0.5);
         }
 
-        /* Logo styling */
+        /* Mobile-optimized logo styling */
         .logo {
             display: flex;
             align-items: center;
         }
 
         .logo-icon {
-            width: 40px;
-            height: 40px;
+            width: 32px;
+            height: 32px;
             display: flex;
             align-items: center;
             justify-content: center;
             background: linear-gradient(135deg, #4338ca, #312e81);
             color: white;
-            border-radius: 8px;
-            margin-right: 10px;
-            font-size: 18px;
+            border-radius: 6px;
+            margin-right: 8px;
+            font-size: 14px;
+        }
+
+        @media (min-width: 640px) {
+            .logo-icon {
+                width: 36px;
+                height: 36px;
+                border-radius: 7px;
+                margin-right: 10px;
+                font-size: 16px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .logo-icon {
+                width: 40px;
+                height: 40px;
+                border-radius: 8px;
+                font-size: 18px;
+            }
         }
 
         .logo-text {
             font-weight: 700;
-            font-size: 22px;
+            font-size: 18px;
             color: #c7d2fe;
+        }
+
+        @media (min-width: 640px) {
+            .logo-text {
+                font-size: 20px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .logo-text {
+                font-size: 22px;
+            }
         }
     </style>
 </head>
@@ -362,44 +757,45 @@
                     <a href="#contact" class="btn-primary">Request Demo</a>
                 </div>
                 <div class="md:hidden">
-                    <button class="text-gray-300 focus:outline-none mobile-menu-button">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    <button class="text-gray-300 focus:outline-none mobile-menu-button p-2 rounded-lg hover:bg-gray-800 transition-colors" aria-label="Menu" aria-expanded="false">
+                        <svg class="w-8 h-8 hamburger-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path class="hamburger-open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                            <path class="hamburger-close hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                         </svg>
                     </button>
                 </div>
             </div>
             <!-- Mobile menu -->
-            <div class="md:hidden hidden mobile-menu mt-4">
-                <a href="#features" class="block py-2 text-gray-300 hover:text-indigo-400 transition-colors">Features</a>
-                <a href="#how-it-works" class="block py-2 text-gray-300 hover:text-indigo-400 transition-colors">How It Works</a>
-                <a href="#pricing" class="block py-2 text-gray-300 hover:text-indigo-400 transition-colors">Pricing</a>
-                <a href="#faq" class="block py-2 text-gray-300 hover:text-indigo-400 transition-colors">FAQ</a>
-                <a href="#contact" class="block py-2 text-gray-300 hover:text-indigo-400 transition-colors">Contact</a>
-                <a href="#contact" class="btn-primary mt-4 block text-center">Request Demo</a>
+            <div class="md:hidden hidden mobile-menu mt-4 bg-gray-800 rounded-lg p-4 shadow-lg border border-indigo-900 animate-fade-in-down">
+                <a href="#features" class="block py-3 px-2 text-gray-300 hover:text-indigo-400 transition-colors text-lg border-b border-gray-700">Features</a>
+                <a href="#how-it-works" class="block py-3 px-2 text-gray-300 hover:text-indigo-400 transition-colors text-lg border-b border-gray-700">How It Works</a>
+                <a href="#pricing" class="block py-3 px-2 text-gray-300 hover:text-indigo-400 transition-colors text-lg border-b border-gray-700">Pricing</a>
+                <a href="#faq" class="block py-3 px-2 text-gray-300 hover:text-indigo-400 transition-colors text-lg border-b border-gray-700">FAQ</a>
+                <a href="#contact" class="block py-3 px-2 text-gray-300 hover:text-indigo-400 transition-colors text-lg border-b border-gray-700">Contact</a>
+                <a href="#contact" class="btn-primary mt-4 block text-center w-full">Request Demo</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative pt-28 pb-24 bg-gradient-hero">
-        <div class="container mx-auto px-6 relative z-10">
+    <section class="relative pt-20 md:pt-24 lg:pt-28 pb-16 md:pb-20 lg:pb-24 bg-gradient-hero">
+        <div class="container mx-auto px-4 md:px-6 relative z-10">
             <div class="flex flex-col lg:flex-row items-center">
-                <div class="lg:w-1/2 fade-in">
-                    <div class="mb-8 flex">
-                        <div class="logo-icon text-4xl w-16 h-16 rounded-lg">
+                <div class="w-full lg:w-1/2 fade-in">
+                    <div class="mb-6 md:mb-8 flex">
+                        <div class="logo-icon text-3xl md:text-4xl w-12 h-12 md:w-16 md:h-16 rounded-lg">
                             <i class="fas fa-shield-alt"></i>
                         </div>
                     </div>
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">Randomized Scheduling Built for Compliance</h1>
-                    <p class="text-xl text-indigo-200 mb-8">LabGuard HQ streamlines drug testing operations for counties, labs, and testing facilities with intelligent randomization, scheduling, and notification systems.</p>
-                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                        <a href="#contact" class="btn-primary bg-white text-indigo-900 hover:bg-gray-200 hover:text-indigo-900 font-semibold">Request Demo</a>
-                        <a href="#features" class="btn-secondary hover:bg-indigo-700 hover:text-white">Explore Features</a>
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4 md:mb-6">Randomized Scheduling Built for Compliance</h1>
+                    <p class="text-lg md:text-xl text-indigo-200 mb-6 md:mb-8">LabGuard HQ streamlines drug testing operations for counties, labs, and testing facilities with intelligent randomization, scheduling, and notification systems.</p>
+                    <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
+                        <a href="#contact" class="btn-primary bg-white text-indigo-900 hover:bg-gray-200 hover:text-indigo-900 font-semibold w-full sm:w-auto text-center">Request Demo</a>
+                        <a href="#features" class="btn-secondary hover:bg-indigo-700 hover:text-white w-full sm:w-auto text-center">Explore Features</a>
                     </div>
                 </div>
-                <div class="lg:w-1/2 mt-12 lg:mt-0 fade-in">
-                    <div class="dashboard-mockup mx-auto max-w-lg shadow-2xl">
+                <div class="w-full lg:w-1/2 mt-10 md:mt-12 lg:mt-0 fade-in">
+                    <div class="dashboard-mockup mx-auto max-w-sm md:max-w-md lg:max-w-lg shadow-2xl">
                         <div class="dashboard-header">
                             <div class="flex items-center">
                                 <div class="w-3 h-3 rounded-full bg-red-400 mr-2"></div>
@@ -540,22 +936,23 @@
                         </div>
                     </div>
 
-                    <!-- Step 2: Processing -->
-                    <div class="bg-gray-700 p-6 rounded-lg">
-                        <div class="h-16 w-16 bg-indigo-700 rounded-full flex items-center justify-center text-white text-2xl mx-auto mb-4">
+                    <!-- Step 2: Processing - Mobile Optimized -->
+                    <div class="bg-gray-700 p-4 sm:p-6 rounded-lg">
+                        <div class="h-12 w-12 sm:h-16 sm:w-16 bg-indigo-700 rounded-full flex items-center justify-center text-white text-xl sm:text-2xl mx-auto mb-3 sm:mb-4">
                             <i class="fas fa-random"></i>
                         </div>
-                        <h3 class="text-xl font-bold mb-3">2. Randomization</h3>
-                        <div class="relative h-48 flex items-center justify-center">
+                        <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">2. Randomization</h3>
+                        <div class="relative h-40 sm:h-48 flex items-center justify-center">
                             <div class="absolute inset-0 flex items-center justify-center">
-                                <div class="w-32 h-32 rounded-full border-4 border-indigo-500 border-dashed animate-spin"></div>
+                                <div class="w-24 h-24 sm:w-32 sm:h-32 rounded-full border-3 sm:border-4 border-indigo-500 border-dashed animate-spin" style="animation-duration: 10s;"></div>
                             </div>
                             <div class="absolute inset-0 flex items-center justify-center">
-                                <div class="w-40 h-40 rounded-full border-4 border-teal-500 border-dashed animate-spin" style="animation-duration: 8s;"></div>
+                                <div class="w-32 h-32 sm:w-40 sm:h-40 rounded-full border-3 sm:border-4 border-teal-500 border-dashed animate-spin" style="animation-duration: 15s;"></div>
                             </div>
-                            <div class="z-10 bg-gray-800 p-3 rounded-lg border border-indigo-500">
-                                <p class="text-white font-medium">Secure Algorithm</p>
-                                <p class="text-gray-300 text-sm">Cryptographically Sound</p>
+                            <!-- Optimized center content for mobile -->
+                            <div class="z-10 bg-gray-800 p-2 sm:p-3 rounded-lg border border-indigo-500 max-w-[80%] text-center">
+                                <p class="text-white font-medium text-sm sm:text-base">Secure Algorithm</p>
+                                <p class="text-gray-300 text-xs sm:text-sm">Cryptographically Sound</p>
                             </div>
                         </div>
                     </div>
@@ -595,154 +992,152 @@
     </section>
 
     <!-- Features Section -->
-    <section id="features" class="py-20">
-        <div class="container mx-auto px-6">
-            <div class="text-center max-w-3xl mx-auto mb-16 fade-in">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Comprehensive Drug Testing Management</h2>
-                <p class="text-xl text-gray-300">Our platform offers everything you need to streamline your drug testing operations.</p>
+    <section id="features" class="py-12 sm:py-16 md:py-20">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-12 md:mb-16 fade-in">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">Comprehensive Drug Testing Management</h2>
+                <p class="text-lg sm:text-xl text-gray-300">Our platform offers everything you need to streamline your drug testing operations.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                 <div class="feature-card fade-in" style="transition-delay: 0.1s;">
                     <div class="feature-icon">
                         <i class="fas fa-random"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Randomized Scheduling Algorithm</h3>
-                    <p class="text-gray-300">Utilizes advanced algorithms to assign drug tests randomly, ensuring no predictability and maintaining the integrity of the testing process. Balance lab capacity and optimize resource allocation automatically.</p>
+                    <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">Randomized Scheduling Algorithm</h3>
+                    <p class="text-gray-300 text-sm sm:text-base">Utilizes advanced algorithms to assign drug tests randomly, ensuring no predictability and maintaining the integrity of the testing process. Balance lab capacity and optimize resource allocation automatically.</p>
                 </div>
 
                 <div class="feature-card fade-in" style="transition-delay: 0.2s;">
                     <div class="feature-icon">
                         <i class="fas fa-shield-alt"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Secure Data Management</h3>
-                    <p class="text-gray-300">Industry-leading security protocols protect sensitive information and ensure HIPAA compliance. Enterprise-grade security with role-based access controls and comprehensive audit logs.</p>
+                    <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">Secure Data Management</h3>
+                    <p class="text-gray-300 text-sm sm:text-base">Industry-leading security protocols protect sensitive information and ensure HIPAA compliance. Enterprise-grade security with role-based access controls and comprehensive audit logs.</p>
                 </div>
 
                 <div class="feature-card fade-in" style="transition-delay: 0.3s;">
                     <div class="feature-icon">
                         <i class="fas fa-mobile-alt"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Mobile Notifications</h3>
-                    <p class="text-gray-300">Automated SMS and email alerts keep probationers informed of their testing schedules and requirements. Reduce no-shows with timely reminders and follow-ups.</p>
+                    <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">Mobile Notifications</h3>
+                    <p class="text-gray-300 text-sm sm:text-base">Automated SMS and email alerts keep probationers informed of their testing schedules and requirements. Reduce no-shows with timely reminders and follow-ups.</p>
                 </div>
 
                 <div class="feature-card fade-in" style="transition-delay: 0.4s;">
                     <div class="feature-icon">
                         <i class="fas fa-chart-bar"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Analytics Dashboard</h3>
-                    <p class="text-gray-300">Comprehensive reporting tools provide insights into testing patterns, compliance rates, and program effectiveness. Make data-driven decisions with intuitive visualizations.</p>
+                    <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">Analytics Dashboard</h3>
+                    <p class="text-gray-300 text-sm sm:text-base">Comprehensive reporting tools provide insights into testing patterns, compliance rates, and program effectiveness. Make data-driven decisions with intuitive visualizations.</p>
                 </div>
 
                 <div class="feature-card fade-in" style="transition-delay: 0.5s;">
                     <div class="feature-icon">
                         <i class="fas fa-tasks"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Case Management</h3>
-                    <p class="text-gray-300">Streamlined case management tools help probation officers track and manage their caseloads efficiently. Maintain comprehensive records and monitor participant progress.</p>
+                    <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">Case Management</h3>
+                    <p class="text-gray-300 text-sm sm:text-base">Streamlined case management tools help probation officers track and manage their caseloads efficiently. Maintain comprehensive records and monitor participant progress.</p>
                 </div>
 
                 <div class="feature-card fade-in" style="transition-delay: 0.6s;">
                     <div class="feature-icon">
                         <i class="fas fa-cloud"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">24/7 Availability</h3>
-                    <p class="text-gray-300">Cloud-based system ensures round-the-clock access to testing schedules and results for authorized users. Access critical information from anywhere, anytime.</p>
+                    <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">24/7 Availability</h3>
+                    <p class="text-gray-300 text-sm sm:text-base">Cloud-based system ensures round-the-clock access to testing schedules and results for authorized users. Access critical information from anywhere, anytime.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- How It Works Section -->
-    <section id="how-it-works" class="py-20 bg-indigo-900 bg-opacity-20">
-        <div class="container mx-auto px-6">
-            <div class="text-center max-w-3xl mx-auto mb-16 fade-in">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">How LabGuard HQ Works</h2>
-                <p class="text-xl text-gray-300">Our streamlined process makes drug testing management effortless.</p>
+    <section id="how-it-works" class="py-12 sm:py-16 md:py-20 bg-indigo-900 bg-opacity-20">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-12 md:mb-16 fade-in">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">How LabGuard HQ Works</h2>
+                <p class="text-lg sm:text-xl text-gray-300">Our streamlined process makes drug testing management effortless.</p>
             </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
-                <div class="text-center fade-in" style="transition-delay: 0.1s;">
-                    <div class="w-20 h-20 bg-indigo-700 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">1</div>
-                    <h3 class="text-xl font-bold mb-3">Setup Your Program</h3>
-                    <p class="text-gray-300">Configure your testing programs, subject pools, frequency requirements, and notification preferences. Import existing data or start fresh.</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mb-8 sm:mb-10 md:mb-12">
+                <div class="text-center fade-in bg-gray-800 bg-opacity-50 p-6 rounded-lg border border-indigo-900 border-opacity-50" style="transition-delay: 0.1s;">
+                    <div class="w-16 h-16 sm:w-20 sm:h-20 bg-indigo-700 text-white rounded-full flex items-center justify-center text-xl sm:text-2xl font-bold mx-auto mb-4 sm:mb-6">1</div>
+                    <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">Setup Your Program</h3>
+                    <p class="text-gray-300 text-sm sm:text-base">Configure your testing programs, subject pools, frequency requirements, and notification preferences. Import existing data or start fresh.</p>
                 </div>
-                
-                <div class="text-center fade-in" style="transition-delay: 0.2s;">
-                    <div class="w-20 h-20 bg-indigo-700 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">2</div>
-                    <h3 class="text-xl font-bold mb-3">Generate Test Schedules</h3>
-                    <p class="text-gray-300">Use our randomization engine to generate unbiased test schedules. Review and approve the schedules or let the system run automatically.</p>
+
+                <div class="text-center fade-in bg-gray-800 bg-opacity-50 p-6 rounded-lg border border-indigo-900 border-opacity-50" style="transition-delay: 0.2s;">
+                    <div class="w-16 h-16 sm:w-20 sm:h-20 bg-indigo-700 text-white rounded-full flex items-center justify-center text-xl sm:text-2xl font-bold mx-auto mb-4 sm:mb-6">2</div>
+                    <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">Generate Test Schedules</h3>
+                    <p class="text-gray-300 text-sm sm:text-base">Use our randomization engine to generate unbiased test schedules. Review and approve the schedules or let the system run automatically.</p>
                 </div>
-                
-                <div class="text-center fade-in" style="transition-delay: 0.3s;">
-                    <div class="w-20 h-20 bg-indigo-700 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">3</div>
-                    <h3 class="text-xl font-bold mb-3">Automated Notifications</h3>
-                    <p class="text-gray-300">The system automatically notifies subjects and administrators about upcoming tests through your preferred channels.</p>
+
+                <div class="text-center fade-in bg-gray-800 bg-opacity-50 p-6 rounded-lg border border-indigo-900 border-opacity-50" style="transition-delay: 0.3s;">
+                    <div class="w-16 h-16 sm:w-20 sm:h-20 bg-indigo-700 text-white rounded-full flex items-center justify-center text-xl sm:text-2xl font-bold mx-auto mb-4 sm:mb-6">3</div>
+                    <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">Automated Notifications</h3>
+                    <p class="text-gray-300 text-sm sm:text-base">The system automatically notifies subjects and administrators about upcoming tests through your preferred channels.</p>
                 </div>
-            </div>
-            
-            <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
-                <div class="text-center fade-in" style="transition-delay: 0.4s;">
-                    <div class="w-20 h-20 bg-indigo-700 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">4</div>
-                    <h3 class="text-xl font-bold mb-3">Track Compliance</h3>
-                    <p class="text-gray-300">Monitor test completion, record results, and track compliance in real-time through our user-friendly dashboard.</p>
+
+                <div class="text-center fade-in bg-gray-800 bg-opacity-50 p-6 rounded-lg border border-indigo-900 border-opacity-50" style="transition-delay: 0.4s;">
+                    <div class="w-16 h-16 sm:w-20 sm:h-20 bg-indigo-700 text-white rounded-full flex items-center justify-center text-xl sm:text-2xl font-bold mx-auto mb-4 sm:mb-6">4</div>
+                    <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">Track Compliance</h3>
+                    <p class="text-gray-300 text-sm sm:text-base">Monitor test completion, record results, and track compliance in real-time through our user-friendly dashboard.</p>
                 </div>
-                
-                <div class="text-center fade-in" style="transition-delay: 0.5s;">
-                    <div class="w-20 h-20 bg-indigo-700 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">5</div>
-                    <h3 class="text-xl font-bold mb-3">Analyze Results</h3>
-                    <p class="text-gray-300">Generate comprehensive reports and analytics to evaluate program effectiveness and meet regulatory requirements.</p>
+
+                <div class="text-center fade-in bg-gray-800 bg-opacity-50 p-6 rounded-lg border border-indigo-900 border-opacity-50" style="transition-delay: 0.5s;">
+                    <div class="w-16 h-16 sm:w-20 sm:h-20 bg-indigo-700 text-white rounded-full flex items-center justify-center text-xl sm:text-2xl font-bold mx-auto mb-4 sm:mb-6">5</div>
+                    <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">Analyze Results</h3>
+                    <p class="text-gray-300 text-sm sm:text-base">Generate comprehensive reports and analytics to evaluate program effectiveness and meet regulatory requirements.</p>
                 </div>
-                
-                <div class="text-center fade-in" style="transition-delay: 0.6s;">
-                    <div class="w-20 h-20 bg-indigo-700 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">6</div>
-                    <h3 class="text-xl font-bold mb-3">Continuous Improvement</h3>
-                    <p class="text-gray-300">Use insights from analytics to refine your testing programs, improving efficiency and effectiveness over time.</p>
+
+                <div class="text-center fade-in bg-gray-800 bg-opacity-50 p-6 rounded-lg border border-indigo-900 border-opacity-50" style="transition-delay: 0.6s;">
+                    <div class="w-16 h-16 sm:w-20 sm:h-20 bg-indigo-700 text-white rounded-full flex items-center justify-center text-xl sm:text-2xl font-bold mx-auto mb-4 sm:mb-6">6</div>
+                    <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">Continuous Improvement</h3>
+                    <p class="text-gray-300 text-sm sm:text-base">Use insights from analytics to refine your testing programs, improving efficiency and effectiveness over time.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Pricing Section -->
-    <section id="pricing" class="py-20">
-        <div class="container mx-auto px-6">
-            <div class="text-center max-w-3xl mx-auto mb-16 fade-in">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Flexible Pricing</h2>
-                <p class="text-xl text-gray-300">Customized solutions tailored to your organization's needs</p>
+    <section id="pricing" class="py-12 sm:py-16 md:py-20">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-12 md:mb-16 fade-in">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">Flexible Pricing</h2>
+                <p class="text-lg sm:text-xl text-gray-300">Customized solutions tailored to your organization's needs</p>
             </div>
-            
-            <div class="pricing-card fade-in w-3/4 mx-auto">
+
+            <div class="pricing-card fade-in w-full sm:w-5/6 md:w-3/4 lg:w-2/3 mx-auto">
                 <div class="pricing-header">
-                    <h3 class="text-xl font-bold mb-2">Custom Solutions</h3>
+                    <h3 class="text-lg sm:text-xl font-bold mb-2">Custom Solutions</h3>
                 </div>
                 <div class="pricing-body">
-                    <div class="mb-6">
-                        <p class="text-gray-300 mb-6">Our pricing depends on several factors including the size of your organization, number of subjects, required features, and implementation complexity.</p>
+                    <div class="mb-4 sm:mb-6">
+                        <p class="text-gray-300 text-sm sm:text-base mb-4 sm:mb-6">Our pricing depends on several factors including the size of your organization, number of subjects, required features, and implementation complexity.</p>
                     </div>
-                    <div class="mb-8">
+                    <div class="mb-6 sm:mb-8">
                         <div class="pricing-feature">
                             <i class="fas fa-check"></i>
-                            <span>Tailored to your specific requirements</span>
+                            <span class="text-sm sm:text-base">Tailored to your specific requirements</span>
                         </div>
                         <div class="pricing-feature">
                             <i class="fas fa-check"></i>
-                            <span>Scalable solutions for organizations of all sizes</span>
+                            <span class="text-sm sm:text-base">Scalable solutions for organizations of all sizes</span>
                         </div>
                         <div class="pricing-feature">
                             <i class="fas fa-check"></i>
-                            <span>Flexible implementation options</span>
+                            <span class="text-sm sm:text-base">Flexible implementation options</span>
                         </div>
                         <div class="pricing-feature">
                             <i class="fas fa-check"></i>
-                            <span>Personalized support packages</span>
+                            <span class="text-sm sm:text-base">Personalized support packages</span>
                         </div>
                         <div class="pricing-feature">
                             <i class="fas fa-check"></i>
-                            <span>Transparent pricing with no hidden fees</span>
+                            <span class="text-sm sm:text-base">Transparent pricing with no hidden fees</span>
                         </div>
                     </div>
-                    <a href="#contact" class="btn-primary w-full text-center">Contact Us For Pricing</a>
+                    <a href="#contact" class="btn-primary w-full text-center py-3 sm:py-4 text-sm sm:text-base">Contact Us For Pricing</a>
                 </div>
             </div>
         </div>
@@ -827,40 +1222,40 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20">
-        <div class="container mx-auto px-6">
-            <div class="text-center max-w-3xl mx-auto mb-16 fade-in">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Get in Touch</h2>
-                <p class="text-xl text-gray-300">Interested in learning more about LabGuard HQ? We'd love to hear from you.</p>
+    <section id="contact" class="py-12 sm:py-16 md:py-20">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-12 md:mb-16 fade-in">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">Get in Touch</h2>
+                <p class="text-lg sm:text-xl text-gray-300">Interested in learning more about LabGuard HQ? We'd love to hear from you.</p>
             </div>
-            
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start px-4">
-                <div class="fade-in slide-in-left bg-gray-800 rounded-lg shadow-lg p-8 border border-indigo-800">
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 items-start">
+                <div class="fade-in slide-in-left bg-gray-800 rounded-lg shadow-lg p-5 sm:p-6 md:p-8 border border-indigo-800">
                     <form id="contact-form" class="contact-form" action="https://formspree.io/f/xovdwnba" method="POST">
                         <input type="hidden" name="_subject" value="New LabGuard HQ Contact Request">
                         <div id="form-status" style="display: none; margin-bottom: 1em;"></div>
-                        <h3 class="text-2xl font-bold mb-6">Contact Us</h3>
+                        <h3 class="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Contact Us</h3>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                             <div>
                                 <label for="name" class="block text-sm font-medium text-gray-300 mb-1">First Name</label>
-                                <input type="text" id="name" name="name" required>
+                                <input type="text" id="name" name="name" required class="w-full">
                             </div>
                             <div>
                                 <label for="last-name" class="block text-sm font-medium text-gray-300 mb-1">Last Name</label>
-                                <input type="text" id="last-name" name="last-name" required>
+                                <input type="text" id="last-name" name="last-name" required class="w-full">
                             </div>
                         </div>
                         <div class="mb-4">
                             <label for="email" class="block text-sm font-medium text-gray-300 mb-1">Email</label>
-                            <input type="email" id="email" name="email" required>
+                            <input type="email" id="email" name="email" required class="w-full">
                         </div>
                         <div class="mb-4">
                             <label for="organization" class="block text-sm font-medium text-gray-300 mb-1">Organization</label>
-                            <input type="text" id="organization" name="organization" required>
+                            <input type="text" id="organization" name="organization" required class="w-full">
                         </div>
                         <div class="mb-4">
                             <label for="interest" class="block text-sm font-medium text-gray-300 mb-1">I'm interested in</label>
-                            <select id="interest" name="interest" required>
+                            <select id="interest" name="interest" required class="w-full">
                                 <option value="" disabled selected>Select an option</option>
                                 <option value="demo">Scheduling a demo</option>
                                 <option value="pricing">Pricing information</option>
@@ -868,18 +1263,18 @@
                                 <option value="feature">Feature requests</option>
                             </select>
                         </div>
-                        <div class="mb-6">
+                        <div class="mb-5 sm:mb-6">
                             <label for="message" class="block text-sm font-medium text-gray-300 mb-1">Message</label>
-                            <textarea id="message" name="message" rows="4" required></textarea>
+                            <textarea id="message" name="message" rows="4" required class="w-full"></textarea>
                         </div>
-                        <button type="submit" class="btn-primary w-full">Send Message</button>
+                        <button type="submit" class="btn-primary w-full py-3 text-base sm:text-lg">Send Message</button>
                     </form>
                 </div>
-                
+
                 <div class="fade-in slide-in-right">
-                    <div class="bg-gray-800 rounded-lg shadow-lg p-8 border border-indigo-800">
-                        <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
-                        <div class="space-y-6 mb-8">
+                    <div class="bg-gray-800 rounded-lg shadow-lg p-5 sm:p-6 md:p-8 border border-indigo-800">
+                        <h3 class="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Contact Information</h3>
+                        <div class="space-y-4 sm:space-y-6 mb-6 sm:mb-8">
                             <div class="flex items-start">
                                 <div class="flex-shrink-0 h-10 w-10 rounded-full bg-indigo-900 flex items-center justify-center mr-4">
                                     <i class="fas fa-envelope text-indigo-200"></i>
@@ -899,29 +1294,29 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div>
-                            <h4 class="text-lg font-semibold mb-4">Quick Answers</h4>
-                            <div class="space-y-4">
+                            <h4 class="text-lg font-semibold mb-3 sm:mb-4">Quick Answers</h4>
+                            <div class="space-y-3 sm:space-y-4">
                                 <div class="flex items-start">
                                     <i class="fas fa-check standard-check mt-1"></i>
                                     <div>
                                         <p class="font-medium text-white">Implementation Time</p>
-                                        <p class="text-gray-300">Most clients are up and running within 2-4 weeks, depending on complexity.</p>
+                                        <p class="text-gray-300 text-sm sm:text-base">Most clients are up and running within 2-4 weeks, depending on complexity.</p>
                                     </div>
                                 </div>
                                 <div class="flex items-start">
                                     <i class="fas fa-check standard-check mt-1"></i>
                                     <div>
                                         <p class="font-medium text-white">Regulatory Compliance</p>
-                                        <p class="text-gray-300">Our system meets all relevant requirements for random drug testing programs.</p>
+                                        <p class="text-gray-300 text-sm sm:text-base">Our system meets all relevant requirements for random drug testing programs.</p>
                                     </div>
                                 </div>
                                 <div class="flex items-start">
                                     <i class="fas fa-check standard-check mt-1"></i>
                                     <div>
                                         <p class="font-medium text-white">System Integration</p>
-                                        <p class="text-gray-300">We offer API access and custom integrations with your existing systems.</p>
+                                        <p class="text-gray-300 text-sm sm:text-base">We offer API access and custom integrations with your existing systems.</p>
                                     </div>
                                 </div>
                             </div>
@@ -933,38 +1328,38 @@
     </section>
 
     <!-- FAQ Section -->
-    <section id="faq" class="py-20 bg-indigo-900 bg-opacity-20">
-        <div class="container mx-auto px-6">
-            <div class="text-center max-w-3xl mx-auto mb-16 fade-in">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
-                <p class="text-xl text-gray-300">Get answers to common questions about LabGuard HQ</p>
+    <section id="faq" class="py-12 sm:py-16 md:py-20 bg-indigo-900 bg-opacity-20">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-12 md:mb-16 fade-in">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">Frequently Asked Questions</h2>
+                <p class="text-lg sm:text-xl text-gray-300">Get answers to common questions about LabGuard HQ</p>
             </div>
 
-            <div class="bg-gray-800 rounded-lg shadow-lg p-8 max-w-4xl mx-auto fade-in border border-indigo-800">
-                <div class="space-y-6">
-                    <div class="border-b border-gray-700 pb-6">
-                        <p class="font-medium text-white text-lg mb-2">How quickly can we implement LabGuard HQ?</p>
-                        <p class="text-gray-300">Most clients are up and running within 2-4 weeks, depending on the complexity of your program and data migration needs.</p>
+            <div class="bg-gray-800 rounded-lg shadow-lg p-5 sm:p-6 md:p-8 max-w-4xl mx-auto fade-in border border-indigo-800">
+                <div class="space-y-4 sm:space-y-6">
+                    <div class="border-b border-gray-700 pb-4 sm:pb-6">
+                        <p class="font-medium text-white text-base sm:text-lg mb-1 sm:mb-2">How quickly can we implement LabGuard HQ?</p>
+                        <p class="text-gray-300 text-sm sm:text-base">Most clients are up and running within 2-4 weeks, depending on the complexity of your program and data migration needs.</p>
                     </div>
-                    <div class="border-b border-gray-700 pb-6">
-                        <p class="font-medium text-white text-lg mb-2">Is LabGuard HQ compliant with relevant regulations?</p>
-                        <p class="text-gray-300">Yes, our system is designed to meet all relevant regulatory requirements for random drug testing programs.</p>
+                    <div class="border-b border-gray-700 pb-4 sm:pb-6">
+                        <p class="font-medium text-white text-base sm:text-lg mb-1 sm:mb-2">Is LabGuard HQ compliant with relevant regulations?</p>
+                        <p class="text-gray-300 text-sm sm:text-base">Yes, our system is designed to meet all relevant regulatory requirements for random drug testing programs.</p>
                     </div>
-                    <div class="border-b border-gray-700 pb-6">
-                        <p class="font-medium text-white text-lg mb-2">Can LabGuard HQ integrate with our existing systems?</p>
-                        <p class="text-gray-300">We offer robust API access and can develop custom integrations with your existing case management, laboratory, or reporting systems.</p>
+                    <div class="border-b border-gray-700 pb-4 sm:pb-6">
+                        <p class="font-medium text-white text-base sm:text-lg mb-1 sm:mb-2">Can LabGuard HQ integrate with our existing systems?</p>
+                        <p class="text-gray-300 text-sm sm:text-base">We offer robust API access and can develop custom integrations with your existing case management, laboratory, or reporting systems.</p>
                     </div>
-                    <div class="border-b border-gray-700 pb-6">
-                        <p class="font-medium text-white text-lg mb-2">What kind of support is included?</p>
-                        <p class="text-gray-300">All clients receive comprehensive support, including implementation assistance, training, and ongoing technical support. Support packages are tailored to your organization's specific needs.</p>
+                    <div class="border-b border-gray-700 pb-4 sm:pb-6">
+                        <p class="font-medium text-white text-base sm:text-lg mb-1 sm:mb-2">What kind of support is included?</p>
+                        <p class="text-gray-300 text-sm sm:text-base">All clients receive comprehensive support, including implementation assistance, training, and ongoing technical support. Support packages are tailored to your organization's specific needs.</p>
                     </div>
-                    <div class="border-b border-gray-700 pb-6">
-                        <p class="font-medium text-white text-lg mb-2">Is the system accessible from mobile devices?</p>
-                        <p class="text-gray-300">Yes, LabGuard HQ is fully responsive and works seamlessly on smartphones, tablets, and desktop computers, allowing authorized users to access the system from anywhere.</p>
+                    <div class="border-b border-gray-700 pb-4 sm:pb-6">
+                        <p class="font-medium text-white text-base sm:text-lg mb-1 sm:mb-2">Is the system accessible from mobile devices?</p>
+                        <p class="text-gray-300 text-sm sm:text-base">Yes, LabGuard HQ is fully responsive and works seamlessly on smartphones, tablets, and desktop computers, allowing authorized users to access the system from anywhere.</p>
                     </div>
                     <div>
-                        <p class="font-medium text-white text-lg mb-2">How secure is LabGuard HQ?</p>
-                        <p class="text-gray-300">Security is our top priority. We employ enterprise-grade encryption, secure authentication methods, role-based access controls, and regular security audits to ensure your data remains protected.</p>
+                        <p class="font-medium text-white text-base sm:text-lg mb-1 sm:mb-2">How secure is LabGuard HQ?</p>
+                        <p class="text-gray-300 text-sm sm:text-base">Security is our top priority. We employ enterprise-grade encryption, secure authentication methods, role-based access controls, and regular security audits to ensure your data remains protected.</p>
                     </div>
                 </div>
             </div>
@@ -972,68 +1367,138 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-slate-900 text-white py-8">
-        <div class="container mx-auto px-6 text-center">
-            <p class="text-gray-400">&copy; 2025 LabGuard HQ. All rights reserved.</p>
+    <footer class="bg-slate-900 text-white py-6 sm:py-8">
+        <div class="container mx-auto px-4 sm:px-6 text-center">
+            <p class="text-gray-400 text-sm sm:text-base">&copy; 2025 LabGuard HQ. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
-        // Mobile menu toggle
+        // Mobile menu toggle with improved experience
         const mobileMenuButton = document.querySelector('.mobile-menu-button');
         const mobileMenu = document.querySelector('.mobile-menu');
-        
-        if (mobileMenuButton && mobileMenu) {
-            mobileMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-                const expanded = mobileMenuButton.getAttribute('aria-expanded') === 'true' || false;
-                mobileMenuButton.setAttribute('aria-expanded', !expanded);
-            });
+        const hamburgerOpen = document.querySelector('.hamburger-open');
+        const hamburgerClose = document.querySelector('.hamburger-close');
+
+        function toggleMobileMenu() {
+            const isVisible = !mobileMenu.classList.contains('hidden');
+
+            // Toggle menu visibility
+            mobileMenu.classList.toggle('hidden');
+
+            // Toggle hamburger icon state
+            hamburgerOpen.classList.toggle('hidden', !isVisible);
+            hamburgerClose.classList.toggle('hidden', isVisible);
+
+            // Update aria-expanded state
+            const newExpandedState = !isVisible;
+            mobileMenuButton.setAttribute('aria-expanded', newExpandedState);
+
+            // Add slight delay to menu visibility for animation
+            if (newExpandedState) {
+                mobileMenu.style.display = 'block';
+            } else {
+                setTimeout(() => {
+                    if (mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.style.display = '';
+                    }
+                }, 300);
+            }
         }
-        
-        // Scroll animations
-        function revealOnScroll() {
-            const fadeElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right');
-            
-            fadeElements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-                
-                if (elementTop < windowHeight - 100) {
-                    element.classList.add('visible');
+
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', toggleMobileMenu);
+
+            // Close mobile menu when clicking elsewhere on the page
+            document.addEventListener('click', (e) => {
+                if (!mobileMenuButton.contains(e.target) && !mobileMenu.contains(e.target) && !mobileMenu.classList.contains('hidden')) {
+                    toggleMobileMenu();
                 }
             });
         }
         
-        // Initialize animations
+        // Mobile-optimized scroll animations with throttling for better performance
+        function throttle(callback, delay) {
+            let isThrottled = false;
+
+            return function() {
+                if (isThrottled) return;
+
+                isThrottled = true;
+                setTimeout(() => {
+                    callback();
+                    isThrottled = false;
+                }, delay);
+            };
+        }
+
+        function revealOnScroll() {
+            // Check if reduced motion is preferred
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            // Get all elements to animate
+            const fadeElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right');
+
+            // If reduced motion is preferred, just show all elements immediately
+            if (prefersReducedMotion) {
+                fadeElements.forEach(element => {
+                    element.classList.add('visible');
+                });
+                return;
+            }
+
+            // For mobile devices, reduce animation threshold to make them appear sooner
+            const isMobile = window.innerWidth < 640;
+            const threshold = isMobile ? 60 : 100;
+
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+
+                if (elementTop < windowHeight - threshold) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+
+        // Initialize animations - run immediately and add short delay to catch any layout shifts
         window.addEventListener('DOMContentLoaded', () => {
             revealOnScroll();
+            setTimeout(revealOnScroll, 300); // Extra check for any layout shifts
         });
+
+        // Throttled scroll event for better performance - 100ms for mobile, 50ms for desktop
+        const delay = window.innerWidth < 640 ? 100 : 50;
+        window.addEventListener('scroll', throttle(revealOnScroll, delay));
+
+        // Also trigger on resize to catch orientation changes
+        window.addEventListener('resize', throttle(revealOnScroll, 100));
         
-        // Scroll events
-        window.addEventListener('scroll', () => {
-            revealOnScroll();
-        });
-        
-        // Smooth scrolling for anchor links
+        // Improved smooth scrolling for anchor links with mobile handling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                
+
                 const targetId = this.getAttribute('href');
                 if (targetId === '#') return;
-                
+
                 const targetElement = document.querySelector(targetId);
-                
+
                 if (targetElement) {
+                    // Get navbar height for offset calculation
+                    const navbar = document.querySelector('.navbar');
+                    const navbarHeight = navbar ? navbar.offsetHeight : 80;
+
+                    // Scroll with appropriate offset for fixed header
                     window.scrollTo({
-                        top: targetElement.offsetTop - 80,
+                        top: targetElement.offsetTop - navbarHeight - 20, // Extra padding
                         behavior: 'smooth'
                     });
-                    
-                    // Close mobile menu if open
+
+                    // Close mobile menu if open with animation
                     if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-                        mobileMenu.classList.add('hidden');
+                        // Use the toggle function to ensure proper animation
+                        toggleMobileMenu();
                     }
                 }
             });
