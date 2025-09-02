@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -750,6 +751,7 @@
                     <a href="#features" class="text-gray-300 hover:text-indigo-400 transition-colors">Features</a>
                     <a href="#how-it-works" class="text-gray-300 hover:text-indigo-400 transition-colors">How It Works</a>
                     <a href="#pricing" class="text-gray-300 hover:text-indigo-400 transition-colors">Pricing</a>
+                    <a href="#sms" class="text-gray-300 hover:text-indigo-400 transition-colors">Subscribe for SMS</a>
                     <a href="#faq" class="text-gray-300 hover:text-indigo-400 transition-colors">FAQ</a>
                     <a href="#contact" class="text-gray-300 hover:text-indigo-400 transition-colors">Contact</a>
                 </div>
@@ -1326,7 +1328,51 @@
             </div>
         </div>
     </section>
-
+    <!-- SMS Subscription Section -->
+    <section id="sms" class="py-12 sm:py-16 md:py-20 bg-gray-900">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="max-w-2xl mx-auto text-center mb-10 fade-in">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-3">Subscribe for SMS Reminders</h2>
+                <p class="text-lg sm:text-xl text-gray-300 mb-6">Get appointment reminders sent directly to your phone. Enter your mobile number below to subscribe to text message notifications for upcoming drug test appointments.</p>
+            </div>
+            <div class="max-w-md mx-auto bg-gray-800 rounded-lg shadow-lg p-6 fade-in border border-indigo-800">
+                <form id="sms-subscribe-form" class="contact-form">
+                    <label for="sms-phone" class="block text-sm font-medium text-gray-300 mb-2">Mobile Number</label>
+                    <input type="tel" id="sms-phone" name="sms-phone" required pattern="^\+?\d{10,15}$" placeholder="e.g. +15551234567" class="w-full mb-4">
+                    <button type="submit" class="btn-primary w-full py-3 text-base">Subscribe</button>
+                    <div id="sms-form-status" style="display:none; margin-top:1em;"></div>
+                </form>
+            </div>
+        </div>
+        <script>
+            // SMS subscription form handling (demo only, does not send SMS)
+            const smsForm = document.getElementById('sms-subscribe-form');
+            if (smsForm) {
+                smsForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const phoneInput = smsForm.querySelector('input[name="sms-phone"]');
+                    const statusDiv = document.getElementById('sms-form-status');
+                    const subscribeBtn = smsForm.querySelector('button[type="submit"]');
+                    subscribeBtn.disabled = true;
+                    subscribeBtn.innerText = 'Subscribing...';
+                    // Simulate async request
+                    setTimeout(() => {
+                        if (phoneInput.value.match(/^\+?\d{10,15}$/)) {
+                            statusDiv.innerHTML = '<div class="p-3 bg-green-800 text-white rounded">Subscribed! You will receive SMS reminders for appointments.</div>';
+                            statusDiv.style.display = 'block';
+                            smsForm.reset();
+                        } else {
+                            statusDiv.innerHTML = '<div class="p-3 bg-red-800 text-white rounded">Please enter a valid mobile number.</div>';
+                            statusDiv.style.display = 'block';
+                        }
+                        subscribeBtn.disabled = false;
+                        subscribeBtn.innerText = 'Subscribe';
+                        setTimeout(() => { statusDiv.style.display = 'none'; }, 5000);
+                    }, 1200);
+                });
+            }
+        </script>
+    </section>
     <!-- FAQ Section -->
     <section id="faq" class="py-12 sm:py-16 md:py-20 bg-indigo-900 bg-opacity-20">
         <div class="container mx-auto px-4 sm:px-6">
@@ -1364,6 +1410,20 @@
                 </div>
             </div>
         </div>
+        <!-- Privacy Policy Section -->
+        <section id="privacy" class="py-12 sm:py-16 md:py-20 bg-gray-900">
+            <div class="container mx-auto px-4 sm:px-6">
+                <div class="max-w-2xl mx-auto text-center fade-in">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-3">Privacy Policy</h2>
+                    <p class="text-lg sm:text-xl text-gray-300 mb-6">
+                        LabGuard HQ is committed to protecting your privacy and data security. Read our full privacy policy for details on how we handle your information.
+                    </p>
+                    <a href="https://docs.google.com/document/d/1Ekczgw8sQZOspkR9cQkQ4308tGPGWMakowI7Op0eaZU/edit?tab=t.0" target="_blank" rel="noopener" class="btn-secondary text-base font-semibold inline-block">
+                        View Privacy Policy
+                    </a>
+                </div>
+            </div>
+        </section>
     </section>
 
     <!-- Footer -->
