@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Allow: /dot-random-testing-requirements-2026.html
+Allow: /manual-spreadsheets-vs-drug-testing-automation.html
+Allow: /dot-audit-checklist-drug-testing-compliance.html
+Allow: /tpa-consortium-drug-testing-management.html
+
+Sitemap: https://labguardhq.com/sitemap.xml
