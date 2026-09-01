@@ -13,33 +13,33 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Drug Testing Software FAQ | LabGuard HQ</title>
+    <title>DOT Random Test Calculator | LabGuard HQ</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="FAQ for DOT compliance software, probation drug testing schedulers, TPA random pools, notifications, pricing, demos, and audit-ready records.">
-    <meta name="keywords" content="drug testing software FAQ, DOT compliance software FAQ, probation drug testing scheduler FAQ, TPA random pool software, random drug testing notification software">
+    <meta name="description" content="Free DOT random test calculator for FMCSA employers and TPAs. Estimate annual drug and alcohol tests, pacing guidance, audit notes, and time saved.">
+    <meta name="keywords" content="DOT random test calculator, DOT random drug testing calculator, FMCSA random testing rate, DOT alcohol testing calculator, TPA random pool calculator">
     <meta name="author" content="LabGuard HQ">
     <meta name="robots" content="index, follow">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://labguardhq.com/faq.html">
+    <link rel="canonical" href="https://labguardhq.com/dot-random-test-calculator.html">
     
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Drug Testing Software FAQ | LabGuard HQ">
+    <meta property="og:title" content="DOT Random Test Calculator | LabGuard HQ">
     <meta property="og:description" content="FAQ for DOT compliance software, probation drug testing schedulers, TPA random pools, notifications, pricing, demos, and audit-ready records.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://labguardhq.com/faq.html">
+    <meta property="og:url" content="https://labguardhq.com/dot-random-test-calculator.html">
     <meta property="og:image" content="https://labguardhq.com/og-image.jpg">
     <meta property="og:site_name" content="LabGuard HQ">
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Drug Testing Software FAQ | LabGuard HQ">
+    <meta name="twitter:title" content="DOT Random Test Calculator | LabGuard HQ">
     <meta name="twitter:description" content="FAQ for DOT compliance software, probation drug testing schedulers, TPA random pools, notifications, pricing, demos, and audit-ready records.">
     <meta name="twitter:image" content="https://labguardhq.com/og-image.jpg">
     
     <!-- Language Alternatives -->
-    <link rel="alternate" hreflang="en" href="https://labguardhq.com/faq.html">
+    <link rel="alternate" hreflang="en" href="https://labguardhq.com/dot-random-test-calculator.html">
     
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛡️</text></svg>" type="image/svg+xml">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
@@ -775,6 +775,41 @@
                 font-size: 22px;
             }
         }
+
+        .calculator-panel {
+            background: rgba(17, 24, 39, 0.82);
+            border: 1px solid rgba(99, 102, 241, 0.35);
+            border-radius: 8px;
+            box-shadow: 0 22px 55px rgba(0, 0, 0, 0.3);
+        }
+
+        .calculator-input {
+            width: 100%;
+            min-height: 48px;
+            border-radius: 8px;
+            border: 1px solid rgba(99, 102, 241, 0.35);
+            background: rgba(31, 41, 55, 0.9);
+            color: #ffffff;
+            padding: 0.8rem 0.9rem;
+        }
+
+        .calculator-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
+            outline: none;
+        }
+
+        .result-tile {
+            background: rgba(31, 41, 55, 0.72);
+            border: 1px solid rgba(20, 184, 166, 0.25);
+            border-radius: 8px;
+            padding: 1rem;
+        }
+
+        .assumption-note {
+            border-left: 3px solid var(--secondary);
+            background: rgba(20, 184, 166, 0.08);
+        }
     </style>
     
     <!-- Structured Data (Schema.org) -->
@@ -790,68 +825,65 @@
           "logo": "https://labguardhq.com/images/logo.png"
         },
         {
-          "@type": "FAQPage",
-          "@id": "https://labguardhq.com/faq.html#faq",
-          "url": "https://labguardhq.com/faq.html",
-          "name": "Drug Testing Software FAQ",
-          "description": "Questions about DOT compliance software, probation drug testing schedulers, TPA random pools, notifications, pricing, demos, and audit-ready records.",
+          "@type": "SoftwareApplication",
+          "@id": "https://labguardhq.com/dot-random-test-calculator.html#calculator",
+          "name": "DOT Random Test Calculator",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "Web",
+          "url": "https://labguardhq.com/dot-random-test-calculator.html",
+          "description": "Free DOT random test calculator for estimating annual drug and alcohol tests, selection pacing, audit notes, and manual administration time saved.",
           "publisher": {
             "@id": "https://labguardhq.com/#organization"
           },
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://labguardhq.com/dot-random-test-calculator.html#faq",
+          "url": "https://labguardhq.com/dot-random-test-calculator.html",
+          "name": "DOT Random Test Calculator FAQ",
           "mainEntity": [
             {
               "@type": "Question",
-              "name": "Does LabGuard HQ support DOT random pool management?",
+              "name": "How do I calculate annual DOT random testing requirements?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Yes. LabGuard HQ helps manage random pools, selection records, notifications, Return-to-Duty follow-ups, and DOT MIS reporting for regulated programs."
+                "text": "Enter the average covered employee pool size and the required drug and alcohol testing rates. The calculator multiplies the pool size by each rate and rounds up to whole tests for annual planning."
               }
             },
             {
               "@type": "Question",
-              "name": "Can probation programs replace manual color-code testing workflows?",
+              "name": "What DOT mode does this calculator use by default?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Yes. LabGuard HQ supports random scheduling, participant notifications, call-in status checks, no-show visibility, and court-ready records."
+                "text": "The calculator defaults to FMCSA with 50 percent drug testing and 10 percent alcohol testing. Users can choose other DOT agency defaults or enter custom rates."
               }
             },
             {
               "@type": "Question",
-              "name": "What notification channels are available?",
+              "name": "Can random tests be completed all at once?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Programs can use SMS, email, voice alerts, and a dedicated local call-in number so participants can confirm testing status."
+                "text": "DOT random testing should be unannounced, use a scientifically valid selection method, give each covered employee an equal chance of selection, and be spread reasonably throughout the calendar year."
               }
             },
             {
               "@type": "Question",
-              "name": "Can TPAs manage multiple companies or consortiums?",
+              "name": "How does the calculator estimate time saved?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Yes. The workflow supports TPAs and consortium administrators managing multiple clients, employers, owner-operators, and random pools."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Are random selections included in pricing?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Yes. The standard plan includes unlimited random selections, so teams are not charged per selection."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "What should I include in a demo request?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Share your program type, approximate donor or participant volume, and current random selection, notification, reporting, or audit-record workflow."
+                "text": "The time estimate uses visible planning assumptions for notifications, reminders, result updates, testing-cycle planning, no-show follow-up, compliance reporting, and annual audit summary preparation."
               }
             }
           ]
         },
         {
           "@type": "BreadcrumbList",
-          "@id": "https://labguardhq.com/faq.html#breadcrumb",
+          "@id": "https://labguardhq.com/dot-random-test-calculator.html#breadcrumb",
           "itemListElement": [
             {
               "@type": "ListItem",
@@ -862,8 +894,8 @@
             {
               "@type": "ListItem",
               "position": 2,
-              "name": "FAQ",
-              "item": "https://labguardhq.com/faq.html"
+              "name": "DOT Random Test Calculator",
+              "item": "https://labguardhq.com/dot-random-test-calculator.html"
             }
           ]
         }
@@ -887,11 +919,11 @@
                     <a href="index.html" class="text-gray-300 hover:text-indigo-400 transition-colors">Home</a>
                     <a href="probation-solutions.html" class="text-gray-300 hover:text-indigo-400 transition-colors">Probation Solutions</a>
                     <a href="dot-solutions.html" class="text-gray-300 hover:text-indigo-400 transition-colors">DOT Solutions</a>
-                    <a href="dot-random-test-calculator.html" class="text-gray-300 hover:text-indigo-400 transition-colors">Calculator</a>
+                    <a href="dot-random-test-calculator.html" class="text-indigo-200 font-semibold hover:text-indigo-100 transition-colors" aria-current="page">Calculator</a>
                     <a href="features.html" class="text-gray-300 hover:text-indigo-400 transition-colors">Features</a>
                     <a href="pricing.html" class="text-gray-300 hover:text-indigo-400 transition-colors">Pricing</a>
                     <a href="blog.html" class="text-gray-300 hover:text-indigo-400 transition-colors">Blog</a>
-                    <a href="faq.html" class="text-indigo-200 font-semibold hover:text-indigo-100 transition-colors" aria-current="page">FAQ</a>
+                    <a href="faq.html" class="text-gray-300 hover:text-indigo-400 transition-colors">FAQ</a>
                     <a href="contact.html" class="text-gray-300 hover:text-indigo-400 transition-colors">Contact</a>
                 </div>
                 <div class="hidden md:flex md:items-center md:space-x-3">
@@ -911,12 +943,12 @@
             <div class="md:hidden hidden mobile-menu mt-4 bg-gray-800 rounded-lg p-4 shadow-lg border border-indigo-900 animate-fade-in-down">
                 <a href="index.html" class="block py-3 px-2 text-gray-300 hover:text-indigo-400 transition-colors text-lg border-b border-gray-700">Home</a>
                 <a href="dot-solutions.html" class="block py-3 px-2 text-gray-300 hover:text-indigo-400 transition-colors text-lg border-b border-gray-700">DOT Solutions</a>
-                <a href="dot-random-test-calculator.html" class="block py-3 px-2 text-gray-300 hover:text-indigo-400 transition-colors text-lg border-b border-gray-700">Calculator</a>
+                <a href="dot-random-test-calculator.html" class="block py-3 px-2 text-indigo-200 font-semibold hover:text-indigo-100 transition-colors text-lg border-b border-gray-700" aria-current="page">Calculator</a>
                 <a href="probation-solutions.html" class="block py-3 px-2 text-gray-300 hover:text-indigo-400 transition-colors text-lg border-b border-gray-700">Probation Solutions</a>
                 <a href="features.html" class="block py-3 px-2 text-gray-300 hover:text-indigo-400 transition-colors text-lg border-b border-gray-700">Features</a>
                 <a href="pricing.html" class="block py-3 px-2 text-gray-300 hover:text-indigo-400 transition-colors text-lg border-b border-gray-700">Pricing</a>
                 <a href="blog.html" class="block py-3 px-2 text-gray-300 hover:text-indigo-400 transition-colors text-lg border-b border-gray-700">Blog</a>
-                <a href="faq.html" class="block py-3 px-2 text-indigo-200 font-semibold hover:text-indigo-100 transition-colors text-lg border-b border-gray-700" aria-current="page">FAQ</a>
+                <a href="faq.html" class="block py-3 px-2 text-gray-300 hover:text-indigo-400 transition-colors text-lg border-b border-gray-700">FAQ</a>
                 <a href="contact.html" class="block py-3 px-2 text-gray-300 hover:text-indigo-400 transition-colors text-lg border-b border-gray-700">Contact</a>
                 <a href="contact.html" class="btn-primary mt-4 block text-center w-full">Request Demo</a>
                 <a href="https://billing.stripe.com/p/login/8x2bJ00zvgIm5dFa2ZbQY00" class="btn-secondary mt-2 block text-center w-full" target="_blank" rel="noopener noreferrer">Customer Portal</a>
@@ -927,79 +959,161 @@
     <section class="relative pt-24 md:pt-28 lg:pt-32 pb-14 md:pb-16 bg-gradient-hero">
         <div class="hero-blob"></div>
         <div class="container mx-auto px-4 md:px-6 relative z-10">
-            <div class="max-w-3xl mx-auto text-center fade-in">
-                <span class="text-indigo-200 font-bold tracking-wide uppercase text-sm">FAQ</span>
-                <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight my-4">Drug Testing Software FAQ</h1>
-                <p class="text-lg md:text-xl text-indigo-100">Answers for DOT fleets, TPAs, probation departments, courts, and compliance teams evaluating LabGuard HQ.</p>
+            <div class="max-w-4xl mx-auto text-center fade-in">
+                <span class="text-indigo-200 font-bold tracking-wide uppercase text-sm">Free DOT Compliance Tool</span>
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight my-4">DOT Annual Random Test Calculator</h1>
+                <p class="text-lg md:text-xl text-indigo-100">Estimate annual random drug and alcohol test counts, monthly or quarterly pacing, audit notes, and manual administration time saved.</p>
             </div>
         </div>
     </section>
-    <section class="py-12 sm:py-16 md:py-20">
-        <div class="container mx-auto px-4 sm:px-6">
-            <div class="max-w-4xl mx-auto grid gap-10">
-                <div class="fade-in">
-                    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-5">DOT Compliance Software</h2>
-                    <div class="grid gap-5">
-                        <div class="border-t border-indigo-900 pt-5">
-                            <h3 class="text-xl font-bold text-white mb-2">Does LabGuard HQ support DOT random pool management?</h3>
-                            <p class="text-gray-300">Yes. LabGuard HQ helps manage random pools, selection records, notifications, Return-to-Duty follow-ups, and DOT MIS reporting for regulated programs.</p>
-                        </div>
-                        <div class="border-t border-indigo-900 pt-5">
-                            <h3 class="text-xl font-bold text-white mb-2">What audit records are available?</h3>
-                            <p class="text-gray-300">Teams can review random selection history, notification logs, completion status, Return-to-Duty schedules, and reporting data from one workflow.</p>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="fade-in">
-                    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-5">Probation Drug Testing Scheduler</h2>
-                    <div class="grid gap-5">
-                        <div class="border-t border-indigo-900 pt-5">
-                            <h3 class="text-xl font-bold text-white mb-2">Can probation programs replace manual color-code testing workflows?</h3>
-                            <p class="text-gray-300">Yes. LabGuard HQ supports random scheduling, participant notifications, call-in status checks, no-show visibility, and court-ready records.</p>
-                        </div>
-                        <div class="border-t border-indigo-900 pt-5">
-                            <h3 class="text-xl font-bold text-white mb-2">How are participants notified?</h3>
-                            <p class="text-gray-300">Programs can use SMS, email, voice alerts, and a dedicated local call-in number so participants have multiple ways to confirm testing status.</p>
-                        </div>
-                    </div>
-                </div>
+    <main>
+        <section class="py-12 sm:py-16 md:py-20">
+            <div class="container mx-auto px-4 sm:px-6">
+                <div class="max-w-6xl mx-auto grid lg:grid-cols-5 gap-8 items-start">
+                    <form id="dot-calculator-form" class="calculator-panel p-5 sm:p-6 lg:col-span-2 fade-in">
+                        <h2 class="text-2xl font-bold text-white mb-2">Calculate Random Tests</h2>
+                        <p class="text-gray-300 mb-6 mx-0">FMCSA defaults are selected first. Choose another DOT mode or enter custom percentages if your program uses different rates.</p>
 
-                <div class="fade-in">
-                    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-5">TPAs, Notifications, and Pricing</h2>
-                    <div class="grid gap-5">
-                        <div class="border-t border-indigo-900 pt-5">
-                            <h3 class="text-xl font-bold text-white mb-2">Can TPAs manage multiple companies or consortiums?</h3>
-                            <p class="text-gray-300">Yes. The workflow supports TPAs and consortium administrators managing multiple clients, employers, owner-operators, and random pools.</p>
+                        <div class="grid gap-5">
+                            <div>
+                                <label for="pool-size" class="block text-sm font-semibold text-indigo-100 mb-2">Average covered employee pool size</label>
+                                <input id="pool-size" class="calculator-input" type="number" min="1" step="1" value="50" inputmode="numeric" required>
+                            </div>
+
+                            <div>
+                                <label for="dot-mode" class="block text-sm font-semibold text-indigo-100 mb-2">DOT mode</label>
+                                <select id="dot-mode" class="calculator-input">
+                                    <option value="FMCSA" selected>FMCSA - 50% drug / 10% alcohol</option>
+                                    <option value="FAA">FAA - 25% drug / 10% alcohol</option>
+                                    <option value="FRA_COVERED">FRA Covered Service - 25% drug / 10% alcohol</option>
+                                    <option value="FRA_MOW">FRA Maintenance of Way - 25% drug / 10% alcohol</option>
+                                    <option value="FRA_MECH">FRA Mechanical - 50% drug / 10% alcohol</option>
+                                    <option value="FTA">FTA - 50% drug / 10% alcohol</option>
+                                    <option value="PHMSA">PHMSA - 50% drug / alcohol N/A</option>
+                                    <option value="CUSTOM">Custom rates</option>
+                                </select>
+                            </div>
+
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="drug-rate" class="block text-sm font-semibold text-indigo-100 mb-2">Drug testing rate</label>
+                                    <div class="relative">
+                                        <input id="drug-rate" class="calculator-input pr-10" type="number" min="0" max="100" step="0.1" value="50" required>
+                                        <span class="absolute right-4 top-3 text-gray-400">%</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="alcohol-rate" class="block text-sm font-semibold text-indigo-100 mb-2">Alcohol testing rate</label>
+                                    <div class="relative">
+                                        <input id="alcohol-rate" class="calculator-input pr-10" type="number" min="0" max="100" step="0.1" value="10" required>
+                                        <span class="absolute right-4 top-3 text-gray-400">%</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="testing-period" class="block text-sm font-semibold text-indigo-100 mb-2">Selection pacing</label>
+                                <select id="testing-period" class="calculator-input">
+                                    <option value="12">Monthly selections</option>
+                                    <option value="4" selected>Quarterly selections</option>
+                                    <option value="1">Annual planning total</option>
+                                </select>
+                            </div>
+
+                            <button type="submit" class="btn-primary w-full font-semibold">Calculate Requirements</button>
+
+                            <p class="text-xs text-gray-400 mx-0">
+                                DOT agency defaults are based on published 2026 ODAPC random testing rates. Always confirm current requirements with your applicable DOT agency or compliance advisor.
+                            </p>
                         </div>
-                        <div class="border-t border-indigo-900 pt-5">
-                            <h3 class="text-xl font-bold text-white mb-2">Are random selections included in pricing?</h3>
-                            <p class="text-gray-300">Yes. The standard plan includes unlimited random selections, so teams are not charged per selection.</p>
-                        </div>
-                        <div class="border-t border-indigo-900 pt-5">
-                            <h3 class="text-xl font-bold text-white mb-2">What should I include in a demo request?</h3>
-                            <p class="text-gray-300">Share your program type, approximate donor or participant volume, and current random selection, notification, reporting, or audit-record workflow.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="py-10 mb-20">
-        <div class="container mx-auto px-6">
-            <div class="cta-section p-12 fade-in">
-                <div class="px-4">
-                    <div class="text-center">
-                        <h2 class="text-3xl font-bold mb-4">Still Have Questions?</h2>
-                        <p class="text-xl text-indigo-200 mb-6">Tell us about your testing workflow and we will help map the right setup.</p>
-                        <div class="mt-6">
+                    </form>
+
+                    <div class="lg:col-span-3 grid gap-6">
+                        <section class="calculator-panel p-5 sm:p-6 fade-in" aria-live="polite">
+                            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
+                                <div>
+                                    <h2 class="text-2xl font-bold text-white">Your Planning Estimate</h2>
+                                    <p id="result-context" class="text-gray-300 mt-2 mx-0">Based on a 50-person FMCSA pool using quarterly selections.</p>
+                                </div>
+                                <span class="inline-flex self-start px-3 py-1 rounded-full bg-teal-900 text-teal-100 text-sm font-semibold">Guidance estimate</span>
+                            </div>
+
+                            <div class="grid sm:grid-cols-3 gap-4 mb-6">
+                                <div class="result-tile">
+                                    <p class="text-sm text-gray-300 mx-0">Drug tests/year</p>
+                                    <p id="drug-tests" class="text-3xl font-bold text-white mt-2">25</p>
+                                </div>
+                                <div class="result-tile">
+                                    <p class="text-sm text-gray-300 mx-0">Alcohol tests/year</p>
+                                    <p id="alcohol-tests" class="text-3xl font-bold text-white mt-2">5</p>
+                                </div>
+                                <div class="result-tile">
+                                    <p class="text-sm text-gray-300 mx-0">Total workflows</p>
+                                    <p id="total-tests" class="text-3xl font-bold text-white mt-2">30</p>
+                                </div>
+                            </div>
+
+                            <div class="grid md:grid-cols-2 gap-4 mb-6">
+                                <div class="result-tile">
+                                    <h3 class="text-lg font-bold text-white mb-2">Selection Pacing</h3>
+                                    <p id="pacing-guidance" class="text-gray-300 mx-0">Plan roughly 7 or 8 total random test workflows per quarter, spread unpredictably through the year.</p>
+                                </div>
+                                <div class="result-tile">
+                                    <h3 class="text-lg font-bold text-white mb-2">Estimated Time Saved</h3>
+                                    <p id="time-saved" class="text-3xl font-bold text-teal-300 mx-0">13.3 hours/year</p>
+                                    <p id="time-detail" class="text-gray-300 text-sm mt-2 mx-0">Includes 3 estimated compliance follow-up cases.</p>
+                                </div>
+                            </div>
+
+                            <div class="assumption-note p-4">
+                                <h3 class="text-lg font-bold text-white mb-2">Audit Notes</h3>
+                                <ul id="audit-notes" class="text-gray-300 space-y-2">
+                                    <li>Round calculated annual requirements up to whole tests.</li>
+                                    <li>Random selections should be unannounced and spread reasonably throughout the calendar year.</li>
+                                    <li>Each covered employee should have an equal chance of selection using a scientifically valid method.</li>
+                                    <li>This calculator is planning guidance and does not replace legal or compliance advice.</li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        <section class="cta-section p-6 sm:p-8">
+                            <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3">Turn This Estimate Into an Automated Workflow</h2>
+                            <p id="cta-benefit" class="text-indigo-100 text-lg mb-3 mx-0">For this pool, LabGuard HQ can help automate about 30 annual random testing workflows, including notifications, reminders, no-show tracking, compliance follow-up, and audit-ready records.</p>
+                            <p class="text-indigo-100 mb-5 mx-0">You can also review the <a href="faq.html" class="text-white font-semibold hover:text-indigo-100 transition-colors">LabGuard HQ FAQ</a>.</p>
                             <a href="contact.html" class="btn-primary bg-white text-indigo-900 hover:bg-gray-200 font-semibold">Request a Demo</a>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-12 sm:py-16 bg-gray-900">
+            <div class="container mx-auto px-4 sm:px-6">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-6 text-center">DOT Random Testing Calculator FAQ</h2>
+                    <div class="grid gap-5">
+                        <div class="border-t border-indigo-900 pt-5">
+                            <h3 class="text-xl font-bold text-white mb-2">How do I calculate annual DOT random testing requirements?</h3>
+                            <p class="text-gray-300">Enter the average covered employee pool size and the applicable drug and alcohol testing rates. The calculator multiplies the pool size by each rate and rounds up to whole tests for annual planning.</p>
+                        </div>
+                        <div class="border-t border-indigo-900 pt-5">
+                            <h3 class="text-xl font-bold text-white mb-2">What DOT mode does this calculator use by default?</h3>
+                            <p class="text-gray-300">The calculator defaults to FMCSA with 50% drug testing and 10% alcohol testing. You can choose other DOT agency defaults or enter custom rates.</p>
+                        </div>
+                        <div class="border-t border-indigo-900 pt-5">
+                            <h3 class="text-xl font-bold text-white mb-2">Can random tests be completed all at once?</h3>
+                            <p class="text-gray-300">Random testing should be unannounced, use a scientifically valid selection method, give each covered employee an equal chance of selection, and be spread reasonably throughout the calendar year.</p>
+                        </div>
+                        <div class="border-t border-indigo-900 pt-5">
+                            <h3 class="text-xl font-bold text-white mb-2">How does the calculator estimate time saved?</h3>
+                            <p class="text-gray-300">The time estimate uses the visible assumptions listed under the calculator button, including notifications, reminders, result updates, testing-cycle planning, compliance follow-up cases, and annual audit summary preparation.</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <footer class="bg-slate-900 text-white py-6 sm:py-8">
         <div class="container mx-auto px-4 sm:px-6 text-center">
@@ -1137,6 +1251,129 @@
                 }
             });
         });
+
+        const dotRates = {
+            FMCSA: { label: 'FMCSA', drug: 50, alcohol: 10, alcoholApplicable: true },
+            FAA: { label: 'FAA', drug: 25, alcohol: 10, alcoholApplicable: true },
+            FRA_COVERED: { label: 'FRA Covered Service', drug: 25, alcohol: 10, alcoholApplicable: true },
+            FRA_MOW: { label: 'FRA Maintenance of Way', drug: 25, alcohol: 10, alcoholApplicable: true },
+            FRA_MECH: { label: 'FRA Mechanical', drug: 50, alcohol: 10, alcoholApplicable: true },
+            FTA: { label: 'FTA', drug: 50, alcohol: 10, alcoholApplicable: true },
+            PHMSA: { label: 'PHMSA', drug: 50, alcohol: 0, alcoholApplicable: false },
+            CUSTOM: { label: 'custom-rate', drug: 50, alcohol: 10, alcoholApplicable: true }
+        };
+
+        const timeAssumptions = {
+            cyclePlanningMinutes: 20,
+            notificationMinutes: 5,
+            reminderMinutes: 5,
+            resultUpdateMinutes: 5,
+            complianceCaseRate: 0.1,
+            noShowMinutes: 20,
+            complianceReportingMinutes: 30,
+            annualSummaryMinutes: 120
+        };
+
+        const calculatorForm = document.getElementById('dot-calculator-form');
+        const modeSelect = document.getElementById('dot-mode');
+        const poolSizeInput = document.getElementById('pool-size');
+        const drugRateInput = document.getElementById('drug-rate');
+        const alcoholRateInput = document.getElementById('alcohol-rate');
+        const testingPeriodInput = document.getElementById('testing-period');
+
+        function formatHours(minutes) {
+            const hours = minutes / 60;
+            return `${hours.toFixed(1)} hours/year`;
+        }
+
+        function pluralize(count, singular, plural = `${singular}s`) {
+            return count === 1 ? singular : plural;
+        }
+
+        function distribute(total, cycles) {
+            const base = Math.floor(total / cycles);
+            const remainder = total % cycles;
+            return Array.from({ length: cycles }, (_, index) => base + (index < remainder ? 1 : 0));
+        }
+
+        function describeDistribution(name, total, cycles) {
+            if (total === 0) {
+                return `${name}: no annual tests from the current rate.`;
+            }
+
+            if (cycles === 1) {
+                return `${name}: ${total} annual ${pluralize(total, 'test')}.`;
+            }
+
+            const distribution = distribute(total, cycles);
+            const unique = [...new Set(distribution)].sort((a, b) => a - b);
+            const cadence = cycles === 12 ? 'month' : 'quarter';
+            const range = unique.length === 1 ? `${unique[0]}` : `${unique[0]}-${unique[unique.length - 1]}`;
+            return `${name}: roughly ${range} ${pluralize(Number(range.split('-')[0]), 'test')} per ${cadence}.`;
+        }
+
+        function updateCalculator() {
+            if (!calculatorForm) return;
+
+            const poolSize = Math.max(0, Number(poolSizeInput.value) || 0);
+            const mode = dotRates[modeSelect.value] || dotRates.FMCSA;
+            const drugRate = Math.max(0, Number(drugRateInput.value) || 0);
+            const alcoholRate = Math.max(0, Number(alcoholRateInput.value) || 0);
+            const cycles = Math.max(1, Number(testingPeriodInput.value) || 4);
+
+            const drugTests = Math.ceil(poolSize * (drugRate / 100));
+            const alcoholTests = mode.alcoholApplicable ? Math.ceil(poolSize * (alcoholRate / 100)) : 0;
+            const totalTests = drugTests + alcoholTests;
+            const complianceCases = Math.ceil(totalTests * timeAssumptions.complianceCaseRate);
+
+            const manualMinutes =
+                cycles * timeAssumptions.cyclePlanningMinutes +
+                totalTests * timeAssumptions.notificationMinutes +
+                totalTests * timeAssumptions.reminderMinutes +
+                totalTests * timeAssumptions.resultUpdateMinutes +
+                complianceCases * timeAssumptions.noShowMinutes +
+                complianceCases * timeAssumptions.complianceReportingMinutes +
+                timeAssumptions.annualSummaryMinutes;
+
+            const periodLabel = cycles === 12 ? 'monthly' : cycles === 4 ? 'quarterly' : 'annual';
+            const alcoholText = mode.alcoholApplicable ? `${alcoholRate}% alcohol` : 'no alcohol random testing rate in this calculator';
+
+            document.getElementById('result-context').textContent =
+                `Based on a ${poolSize}-person ${mode.label} pool using ${periodLabel} selections, ${drugRate}% drug, and ${alcoholText}.`;
+            document.getElementById('drug-tests').textContent = drugTests;
+            document.getElementById('alcohol-tests').textContent = alcoholTests;
+            document.getElementById('total-tests').textContent = totalTests;
+            document.getElementById('pacing-guidance').textContent =
+                `${describeDistribution('Drug', drugTests, cycles)} ${describeDistribution('Alcohol', alcoholTests, cycles)} Keep selections unpredictable and spread through the year.`;
+            document.getElementById('time-saved').textContent = formatHours(manualMinutes);
+            document.getElementById('time-detail').textContent =
+                `Includes ${complianceCases} estimated ${pluralize(complianceCases, 'compliance follow-up case')} at 10% of annual random tests.`;
+            document.getElementById('cta-benefit').textContent =
+                `For this pool, LabGuard HQ can help automate about ${totalTests} annual random testing ${pluralize(totalTests, 'workflow')}, ${totalTests * 2} notifications and reminders, ${complianceCases} compliance follow-up ${pluralize(complianceCases, 'case')}, result tracking, and audit-ready records. Estimated manual coordination avoided: ${formatHours(manualMinutes)}.`;
+        }
+
+        if (modeSelect) {
+            modeSelect.addEventListener('change', () => {
+                const mode = dotRates[modeSelect.value] || dotRates.FMCSA;
+                drugRateInput.value = mode.drug;
+                alcoholRateInput.value = mode.alcohol;
+                alcoholRateInput.disabled = !mode.alcoholApplicable;
+                alcoholRateInput.classList.toggle('opacity-60', !mode.alcoholApplicable);
+                updateCalculator();
+            });
+        }
+
+        [poolSizeInput, drugRateInput, alcoholRateInput, testingPeriodInput].forEach(input => {
+            if (input) input.addEventListener('input', updateCalculator);
+        });
+
+        if (calculatorForm) {
+            calculatorForm.addEventListener('submit', event => {
+                event.preventDefault();
+                updateCalculator();
+            });
+            updateCalculator();
+        }
 
         // Contact form handling
         const contactForm = document.getElementById('contact-form');
