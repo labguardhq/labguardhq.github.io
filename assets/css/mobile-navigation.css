@@ -1,0 +1,95 @@
+.mobile-menu[hidden],
+.mobile-menu-button[aria-expanded="false"] .hamburger-close,
+.mobile-menu-button[aria-expanded="true"] .hamburger-open {
+    display: none;
+}
+
+.navbar :focus-visible,
+.bg-gradient-hero a:focus-visible {
+    outline: 3px solid #a5b4fc;
+    outline-offset: 2px;
+}
+
+@media (max-width: 1279px) {
+    .navbar > .container {
+        display: flex;
+        flex-direction: column;
+        max-height: 100vh;
+        max-height: 100dvh;
+    }
+
+    .navbar > .container > :first-child {
+        flex-shrink: 0;
+    }
+
+    .mobile-menu {
+        min-height: 0;
+        overflow-y: auto;
+        overscroll-behavior-y: contain;
+        padding: .45rem .9rem;
+        margin: .45rem 0 0;
+        border: 1px solid #374151;
+        border-radius: .75rem;
+        background: #1f2937;
+    }
+
+    .mobile-menu a,
+    .mobile-menu summary {
+        display: flex;
+        align-items: center;
+        min-height: 46px;
+        padding: .5rem .25rem;
+        line-height: 1.4;
+        color: #f3f4f6;
+    }
+
+    .mobile-menu .menu-destination,
+    .mobile-menu summary {
+        justify-content: space-between;
+        font-weight: 600;
+    }
+
+    .menu-destination + .menu-destination,
+    .menu-footer {
+        border-top: 1px solid #374151;
+    }
+
+    .menu-destination i,
+    .menu-footer i,
+    .mobile-menu summary i {
+        font-size: .8rem;
+        color: #a5b4fc;
+    }
+
+    .mobile-menu .menu-demo {
+        justify-content: center;
+        margin: .4rem 0 .55rem;
+        border-radius: .5rem;
+        background: #4338ca;
+        color: white;
+        font-weight: 600;
+    }
+
+    .mobile-menu summary {
+        list-style: none;
+        cursor: pointer;
+    }
+
+    .mobile-menu summary::-webkit-details-marker { display: none; }
+    .mobile-menu details[open] summary i { transform: rotate(180deg); }
+    .mobile-menu details a { padding-left: 1rem; }
+    .mobile-menu a[aria-current] { color: #c7d2fe; font-weight: 700; }
+    .mobile-menu .menu-demo[aria-current] { color: white; }
+
+    .menu-footer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 0 .75rem;
+    }
+    .menu-footer a { gap: .4rem; font-size: .9375rem; }
+}
+
+@media (min-width: 1280px) {
+    .mobile-menu { display: none; }
+}
