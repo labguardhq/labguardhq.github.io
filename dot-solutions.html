@@ -56,10 +56,6 @@
             --gray-light: #374151;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             color: #f3f4f6;
@@ -133,8 +129,15 @@
         
         .bg-gradient-hero {
             background: linear-gradient(135deg, #312e81 0%, #4338ca 100%);
+            overflow: clip;
         }
-        
+
+        #dot-compliance { scroll-margin-top: 5rem; }
+
+        @media (min-width: 768px) {
+            #dot-compliance { scroll-margin-top: 7.25rem; }
+        }
+
         /* Mobile-optimized animations with reduced motion for better performance */
         .fade-in {
             opacity: 0;
@@ -923,27 +926,34 @@
             </div>
         </div>
     </section>
-    <section id="dot-compliance" class="py-20 bg-gray-900 border-b border-gray-800">
-        <div class="container mx-auto px-6">
-            <div class="text-center max-w-3xl mx-auto mb-16 fade-in">
-                <span class="text-teal-400 font-bold tracking-wide uppercase text-sm">For Transportation & Safety</span>
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 mt-2">DOT Compliance Software for Fleets, TPAs, and Consortiums</h2>
-                <p class="text-xl text-gray-300">Automate DOT random testing software workflows for FMCSA-regulated programs, consortiums, Return-to-Duty follow-ups, and annual MIS reports. Estimate your annual random testing requirements with the <a href="dot-random-test-calculator.html" class="text-indigo-300 font-semibold hover:text-indigo-200 transition-colors">DOT random test calculator</a>, review the <a href="features.html" class="text-indigo-300 font-semibold hover:text-indigo-200 transition-colors">random testing scheduler features</a>, or compare <a href="pricing.html" class="text-indigo-300 font-semibold hover:text-indigo-200 transition-colors">subscription pricing</a>.</p>
+    <section id="dot-compliance" aria-labelledby="tpa-heading" class="pt-8 pb-12 md:py-16 bg-gray-900 border-b border-gray-800">
+        <div class="container mx-auto px-5 md:px-6">
+            <div class="max-w-3xl mx-auto mb-8 md:mb-12 md:text-center">
+                <span class="text-indigo-300 font-semibold tracking-wide uppercase text-xs">For TPAs &amp; consortium administrators</span>
+                <h2 id="tpa-heading" class="text-3xl md:text-4xl font-bold leading-tight text-white mt-2 mb-3">Manage DOT testing across client fleets</h2>
+                <p class="text-lg text-gray-300">Keep each employer’s roster, random selections, and testing records organized in one dashboard.</p>
+                <a href="contact.html?industry=tpa#contact-form" class="inline-flex w-full sm:w-auto items-center justify-center gap-3 mt-5 py-3 px-6 bg-indigo-100 text-indigo-900 font-semibold rounded-lg hover:bg-white focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900">
+                    Request a TPA demo <i class="fas fa-arrow-right text-sm" aria-hidden="true"></i>
+                </a>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-gray-800 p-8 rounded-xl border border-indigo-900 hover:border-teal-500 transition-all duration-300 fade-in">
-                    <div class="h-14 w-14 bg-teal-900 text-teal-300 rounded-lg flex items-center justify-center text-2xl mb-6">
-                        <i class="fas fa-users-cog"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3 text-white">TPA Drug Testing and Consortium Management</h3>
-                    <p class="text-gray-400 mb-4">Manage random pools for multiple companies, multi-employer consortiums, or owner-operators in a single dashboard. Built for third party administrators managing hundreds of drivers.</p>
-                    <p class="text-gray-400 mb-4">Offer clients a premium, localized experience with a dedicated check-in number for your
-                        business.</p>
-                    <ul class="text-sm text-gray-300 space-y-2">
-                        <li class="flex items-center"><i class="fas fa-check text-teal-500 mr-2"></i> Random pool management software</li>
-                        <li class="flex items-center"><i class="fas fa-check text-teal-500 mr-2"></i> Auto-refresh pools</li>
-                    </ul>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-8">
+                <div class="bg-gray-800 p-5 sm:p-8 rounded-xl border border-indigo-900">
+                    <h3 class="text-xl font-bold text-white mb-4">From roster to report</h3>
+                    <dl class="divide-y divide-gray-600">
+                        <div class="pb-3">
+                            <dt class="font-semibold text-indigo-200">Update client rosters</dt>
+                            <dd class="text-gray-300">Keep each employer’s drivers organized as people join or leave.</dd>
+                        </div>
+                        <div class="py-3">
+                            <dt class="font-semibold text-indigo-200">Run random selections</dt>
+                            <dd class="text-gray-300">Draw from the right pool and notify selected drivers. Drivers can also check in by phone.</dd>
+                        </div>
+                        <div class="pt-3">
+                            <dt class="font-semibold text-indigo-200">Prepare employer reports</dt>
+                            <dd class="text-gray-300">Review selection records and export annual DOT MIS data for reporting.</dd>
+                        </div>
+                    </dl>
                 </div>
 
                 <div class="bg-gray-800 p-8 rounded-xl border border-indigo-900 hover:border-teal-500 transition-all duration-300 fade-in" style="transition-delay: 0.1s;">
@@ -970,9 +980,14 @@
                     </ul>
                 </div>
             </div>
+            <ul aria-label="DOT program resources" class="flex flex-wrap gap-x-6 gap-y-2 mt-6 text-indigo-300 font-semibold">
+                <li><a href="dot-random-test-calculator.html" class="inline-block py-2 underline">DOT random test calculator</a></li>
+                <li><a href="features.html" class="inline-block py-2 underline">Scheduler features</a></li>
+                <li><a href="pricing.html" class="inline-block py-2 underline">Subscription pricing</a></li>
+            </ul>
         </div>
     </section>
-    <section class="py-20">
+    <section class="py-20 overflow-hidden">
         <div class="container mx-auto px-6">
             <div class="text-center max-w-3xl mx-auto mb-16 fade-in">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">Why DOT Fleets and TPAs Choose LabGuard HQ</h2>

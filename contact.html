@@ -56,10 +56,6 @@
             --gray-light: #374151;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             color: #f3f4f6;
@@ -133,6 +129,13 @@
         
         .bg-gradient-hero {
             background: linear-gradient(135deg, #312e81 0%, #4338ca 100%);
+            overflow: clip;
+        }
+
+        #contact-form { scroll-margin-top: 6.25rem; }
+
+        @media (min-width: 768px) {
+            #contact-form { scroll-margin-top: 8.5rem; }
         }
         
         /* Mobile-optimized animations with reduced motion for better performance */
@@ -916,7 +919,7 @@
             </div>
         </div>
     </section>
-    <section id="contact" class="py-12 sm:py-16 md:py-20">
+    <section id="contact" class="py-12 sm:py-16 md:py-20 overflow-hidden">
         <div class="container mx-auto px-4 sm:px-6">
             <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-12 md:mb-16 fade-in">
                 <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">Get in Touch</h2>
@@ -925,10 +928,10 @@
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 items-start">
                 <div class="fade-in slide-in-left bg-gray-800 rounded-lg shadow-lg p-5 sm:p-6 md:p-8 border border-indigo-800">
-                    <form id="contact-form" class="contact-form" action="https://formspree.io/f/mqpzzgbq" method="POST">
+                    <form id="contact-form" class="contact-form" aria-labelledby="contact-form-title" action="https://formspree.io/f/mqpzzgbq" method="POST">
                         <input type="hidden" name="_subject" value="New LabGuard HQ Contact Request">
                         <div id="form-status" style="display: none; margin-bottom: 1em;"></div>
-                        <h3 class="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Contact Us</h3>
+                        <h3 id="contact-form-title" class="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Contact Us</h3>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                             <div>
                                 <label for="name" class="block text-sm font-medium text-gray-300 mb-1">First Name</label>
@@ -1158,6 +1161,11 @@
         const contactForm = document.getElementById('contact-form');
 
         if (contactForm) {
+            if (new URLSearchParams(window.location.search).get('industry') === 'tpa') {
+                const industry = contactForm.elements.namedItem('industry');
+                if (!industry.value) industry.value = 'tpa';
+                document.getElementById('contact-form-title').textContent = 'Request a TPA demo';
+            }
             contactForm.addEventListener('submit', function(e) {
                 // Let formspree handle the submission
                 // We don't need to prevent default as we want the form to actually submit to Formspree
